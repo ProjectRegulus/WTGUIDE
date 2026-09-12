@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consultative Walkthrough Guide</title>
+<style>
+:root{--ink:#111;--g1:#444;--g2:#777;--g3:#bbb;--g4:#e6e6e6;--g5:#f4f4f4;--w:#fff;--r:6px}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--w);font-size:15px;line-height:1.5}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.wrap{max-width:900px;margin:0 auto;padding:18px 16px 60px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+h1{font-size:18px;margin:0;letter-spacing:.02em;text-transform:uppercase}
+h1 small{display:block;font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--g2);text-transform:uppercase;margin-top:2px}
+h2{font-size:16px;margin:26px 0 8px}
+h3{font-size:13px;margin:16px 0 6px;letter-spacing:.08em;text-transform:uppercase;color:var(--g1)}
+.lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g2);margin:14px 0 4px}
+.lead{color:var(--g1);margin:0 0 12px}
+.hint{font-size:12.5px;color:var(--g2)}
+nav{display:flex;gap:0;border-bottom:1px solid var(--g4);margin:0 0 6px;overflow-x:auto}
+nav button{background:none;border:0;border-bottom:2px solid transparent;padding:12px 14px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--g2);white-space:nowrap}
+nav button.on{color:var(--ink);border-color:var(--ink)}
+section{display:none}section.on{display:block}
+.btn{border:1px solid var(--ink);background:var(--w);border-radius:var(--r);padding:8px 14px;font-size:13px;font-weight:600;min-height:38px}
+.btn.d{background:var(--ink);color:var(--w)}.btn.sm{padding:5px 10px;font-size:12px;min-height:30px}.btn.ghost{border-color:var(--g4);color:var(--g1)}
+.btn:hover{background:var(--g5)}.btn.d:hover{background:#333}
+input[type=text],input[type=number],input[type=date],input[type=time],textarea,select{width:100%;border:1px solid var(--g3);border-radius:var(--r);padding:8px 10px;background:var(--w)}
+textarea{min-height:64px;resize:vertical}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.box{border:1px solid var(--g4);border-radius:var(--r);padding:14px;margin:10px 0}
+.box.dark{background:var(--ink);color:var(--w);border-color:var(--ink)}.box.dark .hint,.box.dark .lbl{color:var(--g3)}
+.say{position:relative;border-left:2px solid var(--ink);padding:8px 90px 8px 14px;margin:8px 0;font-style:italic;background:var(--g5);border-radius:0 var(--r) var(--r) 0;white-space:pre-line}
+.say .copy{position:absolute;right:8px;top:8px}
+.copy{border:1px solid var(--g3);background:var(--w);border-radius:4px;padding:4px 9px;font-size:11px;font-weight:600;letter-spacing:.06em;font-style:normal}
+.copy.ok{background:var(--ink);color:var(--w);border-color:var(--ink)}
+.ck label{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--g4);cursor:pointer}
+.ck label:last-child{border-bottom:0}.ck input{width:18px;height:18px;margin-top:2px;accent-color:#111}
+.ck label.done span{color:var(--g2);text-decoration:line-through}
+.prog{height:4px;background:var(--g4);border-radius:99px;overflow:hidden;margin:6px 0 10px}.prog i{display:block;height:100%;background:var(--ink);width:0;transition:.2s}
+.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:10px 0}
+.stage{border:1px solid var(--g4);border-radius:var(--r);padding:8px 6px;text-align:left;background:var(--w)}
+.stage b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase}.stage span{font-size:11px;color:var(--g2)}
+.stage.on{background:var(--ink);color:var(--w);border-color:var(--ink)}.stage.on span{color:var(--g3)}.stage.done{border-color:var(--ink)}
+.timer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 0}
+.timer .t{font-variant-numeric:tabular-nums;font-size:26px;font-weight:700;letter-spacing:-.02em;min-width:80px}
+.timer .t.over{color:#000;text-decoration:underline}
+.timer .total{font-size:12px;color:var(--g2)}
+.q{margin:14px 0}.q .n{font-size:11px;letter-spacing:.12em;color:var(--g2);text-transform:uppercase}
+.rev{font-size:13px;color:var(--g1);margin:4px 0}.rev b{color:var(--ink)}
+details{border-top:1px solid var(--g4)}details:last-of-type{border-bottom:1px solid var(--g4)}
+summary{cursor:pointer;padding:11px 0;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}summary:after{content:"+";color:var(--g2);font-weight:400}details[open] summary:after{content:"–"}
+details .in{padding:0 0 12px;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:6px 0}
+th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);padding:6px 8px;border-bottom:1px solid var(--ink)}
+td{padding:8px;border-bottom:1px solid var(--g4);vertical-align:top}td:first-child{font-weight:600;white-space:nowrap}
+.field{margin:8px 0}.field label{display:block;font-size:12px;color:var(--g1);margin-bottom:3px}
+.scale{display:flex;gap:4px}.scale button{flex:1;border:1px solid var(--g3);background:var(--w);border-radius:4px;padding:7px 0;font-weight:600}.scale button.on{background:var(--ink);color:var(--w);border-color:var(--ink)}
+.nba{background:var(--ink);color:var(--w);border-radius:var(--r);padding:12px 14px;margin:12px 0}.nba .lbl{color:var(--g3);margin:0 0 3px}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--w);padding:8px 14px;border-radius:var(--r);font-size:13px;opacity:0;pointer-events:none;transition:.2s}.toast.on{opacity:1}
+footer{margin-top:40px;padding-top:12px;border-top:1px solid var(--g4);font-size:12px;color:var(--g2)}
+@media(max-width:640px){.stages{grid-template-columns:repeat(5,1fr)}.stage span{display:none}.say{padding-right:14px;padding-bottom:40px}.say .copy{top:auto;bottom:8px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <h1>Consultative Walkthrough<small>Guide · checklist · notes</small></h1>
+ <div class="row"><input type="text" id="company" placeholder="Your company name" style="width:190px" aria-label="Company name"><button class="btn sm ghost" id="reset">New visit</button></div>
+</header>
+<nav id="nav">
+ <button data-t="prep" class="on">Prepare</button><button data-t="visit">Visit</button><button data-t="sit">Situations</button><button data-t="after">After</button><button data-t="card">Pocket card</button>
+</nav>
+
+<!-- PREPARE -->
+<section id="t-prep" class="on">
+ <p class="lead" style="margin-top:14px">The client usually has 10–15 minutes. Meet the person first, discover their needs with open questions, and walk the space last. If you start by inspecting the building, they experience an inspection. If you start with them, they experience a business conversation — and that conversation is what closes.</p>
+ <div class="box dark"><div class="lbl">The walkthrough in one line</div><b>Person → story → space → two dates. You talk 20%.</b></div>
+ <h3>Visit details</h3>
+ <div class="grid">
+  <div class="field"><label>Client / contact name</label><input type="text" id="f_name" placeholder="Name"></div>
+  <div class="field"><label>Property / business</label><input type="text" id="f_prop" placeholder="Property"></div>
+  <div class="field"><label>Address</label><input type="text" id="f_addr" placeholder="Address"></div>
+  <div class="field"><label>Date &amp; time</label><input type="text" id="f_when" placeholder="e.g. Tue 10:00"></div>
+ </div>
+ <div class="field"><label>Your hypothesis (one line). The visit confirms or corrects it.</label><input type="text" id="f_hyp" placeholder="I think the real problem is ___ and what matters most to them is ___"></div>
+ <h3>10-minute prep</h3>
+ <div class="prog"><i id="p_prep"></i></div>
+ <div class="ck" data-ck="prep">
+  <label><input type="checkbox"><span>Read the CRM: why they called, pain, priorities, objections, who decides, desired start date</span></label>
+  <label><input type="checkbox"><span>Research the property: type, approximate size, other locations, reviews, website</span></label>
+  <label><input type="checkbox"><span>Confirm by text the day before: date, time, address, contact, who will be there</span></label>
+  <label><input type="checkbox"><span>Define the objective: understand real scope and confirm the decision maker — not “give a price”</span></label>
+  <label><input type="checkbox"><span>Pack: business card, COI / W-9 if requested, measuring tool, phone charged for photos</span></label>
+  <label><input type="checkbox"><span>Arrive 5 minutes early: observe exterior, parking and entrance before you announce yourself</span></label>
+ </div>
+ <h3>Confirmation text</h3>
+ <div class="say" data-tpl="Hi {name}, {rep} with {company}. Confirming our walkthrough {when} at {addr}. Will you be walking me through, or should I ask for someone else at the front desk? See you then."></div>
+ <div class="field"><label>Your name (used in scripts)</label><input type="text" id="f_rep" placeholder="Rep name" style="max-width:260px"></div>
+ <div class="nba"><div class="lbl">Next</div>Open the Visit tab when you walk in. Start the timer on Stage 1.</div>
+</section>
+
+<!-- VISIT -->
+<section id="t-visit">
+ <div class="stages" id="stages"></div>
+ <div class="timer"><span class="t" id="tm">00:00</span><span class="hint" id="tmtarget"></span><button class="btn sm" id="tstart">Start</button><button class="btn sm ghost" id="tnext">Next stage →</button><span class="total" id="ttotal"></span></div>
+ <div id="stagebody"></div>
+</section>
+
+<!-- SITUATIONS -->
+<section id="t-sit">
+ <p class="lead" style="margin-top:14px">When the walkthrough doesn't go like the guide.</p>
+ <div id="sits"></div>
+</section>
+
+<!-- AFTER -->
+<section id="t-after">
+ <p class="lead" style="margin-top:14px">Two minutes in the vehicle while it's fresh. Then the same-day email; the proposal within 24–48 hours.</p>
+ <h3>Post-visit evaluation</h3>
+ <div class="grid">
+  <div class="field"><label>Estimated close probability (%)</label><input type="number" id="e_prob" min="0" max="100" placeholder="0–100"></div>
+  <div class="field"><label>Client urgency (1–5)</label><div class="scale" data-scale="e_urg"></div></div>
+  <div class="field"><label>Cultural fit (1–5)</label><div class="scale" data-scale="e_fit"></div></div>
+  <div class="field"><label>Long-term value potential</label><select id="e_ltv"><option value="">—</option><option>Low</option><option>Medium</option><option>High — multiple locations / services</option></select></div>
+ </div>
+ <div class="field"><label>Risks to the close</label><input type="text" id="e_risk" placeholder="Other decision maker, fixed budget, long contract…"></div>
+ <div class="field"><label>Additional services detected (only what you saw or they mentioned)</label><input type="text" id="e_up" placeholder="Floor care, windows, carpet, pressure washing…"></div>
+ <div class="grid"><div class="field"><label>Proposal committed for</label><input type="text" id="e_pdate" placeholder="e.g. Thursday"></div><div class="field"><label>Review call</label><input type="text" id="e_rdate" placeholder="e.g. Friday 2:00"></div></div>
+ <h3>Same-day thank-you email</h3>
+ <div class="say" data-tpl="Subject: Thank you — {prop} walkthrough
+
+Hi {name}, thank you for the time today. Here's what I noted: {p1}, {p2}, {p3}. The proposal will be with you by {pdate}, and we're set to review it together on {rdate}. If I missed anything, just reply here.
+
+{rep}
+{company}"></div>
+ <h3>Timeline</h3>
+ <table><tr><th>When</th><th>Action</th></tr><tr><td>Same day</td><td>Evaluation · CRM (scope, photos, expectations, decision makers, dates) · thank-you email</td></tr><tr><td>24–48 h</td><td>Proposal: summary in the client's words → scope by area and frequency → how you solve their pain → investment → credibility → next step</td></tr><tr><td>Review day</td><td>Scheduled call, decision maker present, close with alternatives</td></tr><tr><td>After</td><td>Follow-up cadence: day 1 · 3 · 7 · 14 · 30</td></tr></table>
+ <h3>Export notes</h3>
+ <p class="hint">Everything you entered, as plain text — paste it into your CRM. Nothing leaves this browser.</p>
+ <div class="row"><button class="btn d" id="exp_copy">Copy all notes</button><button class="btn" id="exp_dl">Download .txt</button></div>
+ <textarea id="exp_out" style="margin-top:10px;min-height:160px;font-family:ui-monospace,monospace;font-size:12.5px" readonly></textarea>
+</section>
+
+<!-- CARD -->
+<section id="t-card">
+ <p class="lead" style="margin-top:14px">The nine questions of the visit. Ask, then be quiet.</p>
+ <div id="card"></div>
+ <div class="box"><div class="lbl">Mistakes that cost the sale</div>
+  <ul style="margin:6px 0 0;padding-left:18px;font-size:14px"><li>Starting with the building instead of the person</li><li>Reading questions out loud from a form</li><li>Filling the silence after an open question</li><li>Giving a price in the hallway</li><li>Criticizing the current provider</li><li>Leaving without a proposal date and a review call</li><li>Promising on site what operations hasn't approved</li></ul></div>
+</section>
+
+<footer>Consultative Walkthrough Guide · This page saves your notes in this browser only (localStorage). Use “New visit” to clear. Your CRM remains the system of record.</footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY="wtguide:v1";let S={};try{S=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),1200)};
+const v=id=>($("#"+id)?.value||S[id]||"").trim();
+const ctx=()=>({name:v("f_name")||"[Name]",prop:v("f_prop")||"[Property]",addr:v("f_addr")||"[address]",when:v("f_when")||"[day/time]",rep:v("f_rep")||"[Rep Name]",company:v("company")||"[Company]",pdate:v("e_pdate")||"[day]",rdate:v("e_rdate")||"[day/time]",p1:(S.n_wand||"").split(/\n|,|;/).map(x=>x.trim()).filter(Boolean)[0]||"[priority 1]",p2:(S.n_wand||"").split(/\n|,|;/).map(x=>x.trim()).filter(Boolean)[1]||"[priority 2]",p3:(S.n_wand||"").split(/\n|,|;/).map(x=>x.trim()).filter(Boolean)[2]||"[priority 3]"});
+const fill=t=>t.replace(/\{(\w+)\}/g,(m,k)=>ctx()[k]??m);
+
+/* ---------- data ---------- */
+const STAGES=[
+{n:1,t:"Open",min:1,goal:"Build trust and explain why you'll ask questions before looking at the building.",
+ say:["Hi {name}, thank you for taking the time to meet with me today. I really appreciate the opportunity.","My name is {rep} with {company}. Before we walk through the facility, I'd like to spend a few minutes learning more about your business, your current cleaning needs, and what's most important to you.","Every facility operates differently, so rather than making assumptions or giving you a standard presentation, I'd like to understand your goals, any challenges you're experiencing, and what success would look like for your team. That way, as we walk the property together, we can focus on the areas that matter most to you."],
+ tips:["Referral? Acknowledge it in one sentence.","Client in a hurry? Cut the third paragraph: “I'd like two minutes to understand what matters most before we walk.”"],notes:[["n_open","Notes"]]},
+{n:2,t:"The person",min:2,goal:"Understand who they are and their level of authority — never ask “are you the decision maker?”.",
+ q:[{s:"So, what's your role here, and how long have you been with {company2}?",r:"Authority level, tenure, quick read on the culture.",l:"“I make that call” (high authority) vs. “I'd have to run it by…” (shared)."},{s:"Before we dive in — is it just you I'll be talking to about this, or is there anyone else who should be part of the conversation?",r:"Other stakeholders without sounding like “who else decides?”.",l:"Names and titles. If someone is mentioned, ask if they should join the proposal review."}],
+ tips:["Observe communication style (direct, detailed, warm, formal). Note it — never ask it."],notes:[["n_role","Role / tenure"],["n_dm","Decision makers"]]},
+{n:3,t:"Discover",min:7,goal:"The most important part. Five open questions, each revealing several things at once. Ask, listen fully, brief notes.",
+ q:[{s:"What made you decide to start looking at other options now?",r:"The real reason, frustration with the current provider, a hidden deadline.",l:"Usually the longest, most honest answer of the visit. Don't interrupt."},{s:"If you could wave a magic wand and fix three things about how your space is cleaned today, what would they be?",r:"A concrete, prioritized problem list.",l:"The first two are what closes. Order matters more than the list."},{s:"What would a great partnership with a cleaning company actually look like, day to day, for you?",r:"Communication expectations, reporting, the real quality standard.",l:"“Reports”, “photos”, “one contact”, “consistency” — that goes in the proposal."},{s:"Walk me through how a decision like this usually happens here — who's involved, and what's the timeline?",r:"Budget, authority, start timeline and urgency in one story.",l:"Dates mentioned in passing (“by end of month”, “before the holidays”) are the real deadline."},{s:"Anything else going on — upcoming events, inspections, or other locations — that we should know about?",r:"Upsell and expansion opportunities.",l:"Any “other location” gets recorded as an opportunity."}],
+ tips:["Price comes up? Don't dodge it: “That's helpful — how do you normally evaluate pricing for this type of service, and is there a range you're working with?” Understand the structure; the number comes after the walk.","Before walking, confirm: “Just to make sure I understand: the main issue is ___, what matters most is ___, and you'd like to start by ___. Is that right?”"],
+ notes:[["n_why","Why now / real reason"],["n_wand","Magic wand — 3 things, in their order (comma-separated)"],["n_partner","Great partnership looks like"],["n_decision","Decision process / budget / timeline"],["n_other","Other locations / events / inspections"]]},
+{n:4,t:"Walk",min:5,goal:"Now walk — knowing what to look for. Mostly observation: check, measure, photograph. Only two questions.",
+ q:[{s:"Which areas get the most traffic, or need the most attention?",r:"Priority zones and the expected standard in them.",l:""},{s:"Anything back here I should know about — chemicals, secure areas, or equipment we need to be careful around?",r:"Hazardous materials, restricted access, operational precautions.",l:""}],
+ tips:["Walk at the client's pace; don't wander off to inspect alone.","When they point at a problem, reflect: “So this is one of the areas that's been frustrating.”","Don't criticize the current provider. The photos speak.","Promise nothing on site that operations hasn't approved."],obs:true},
+{n:5,t:"Close",min:2,goal:"Confirm you listened, set the proposal date, and get the review call before you leave.",
+ say:["This has been really helpful — thank you for being so open with me. Here's what happens next: I'll put together a proposal based on exactly what you've shared, and I'll have it to you by {pdate}. Would {rdate} or [alternative] work better for a quick follow-up to go over it together?"],
+ tips:["Another decision maker mentioned? “Would it make sense to include them in that review call?”","Asked for price on site? “I'd rather give you an accurate number than a guess — you'll have it by {pdate}, and we'll walk through it on {rdate}.”","Simple, clear scope? “We can certainly help. Would you prefer a morning or evening schedule to get started?”","Never leave without two dates: proposal delivery and review call."],notes:[["e_pdate","Proposal committed for"],["e_rdate","Review call (date/time)"]]}];
+const OBS=[["o_type","Property type","Office, medical, retail, industrial, multifamily, construction"],["o_sqft","Approx. square footage","Measure or estimate by zone; ask for the floor plan"],["o_floors","Floors / levels","Elevator, stairs, access between levels"],["o_bath","Bathrooms & fixtures","Workload and supplies"],["o_floortype","Floor types & condition","VCT, carpet, wood, concrete, tile"],["o_special","Special areas","Kitchen, server room, lab, gym"],["o_access","Building access","Keys, code, alarm, hours, on-site contact"],["o_hours","Hours of operation","When it fills up and empties out"],["o_supplies","Supplies & dispensers","Who provides paper, soap, bags; storage"],["o_dump","Dumpsters / disposal","Location and rules"],["o_priority","Priority / problem areas (photos)","What they named in the magic wand"],["o_upsell","Legitimate upsells seen","Floor care, windows, carpet, pressure washing"]];
+const AREAS=[["Entrance & reception","Glass, entry mat, fingerprints, dust on visible surfaces","Client-facing image; detail frequency"],["Bathrooms","Fixtures, odor, dispensers, mold, floor condition","Daily load; supplies; initial deep clean"],["Kitchen / break room","Grease, fridge, microwave, trash","Frequency; explicit scope (inside/outside appliances)"],["Floors","Type, wear, wax, carpet stains","Floor care / carpet as an option, not a surprise"],["Offices / cubicles","High dust, bins, screens, desk density","Time per visit; desk policy"],["High traffic / hallways","Marks, corners, baseboards","Priorities the client stated"],["Janitor closet","Space, water, existing equipment","Logistics; what you bring"],["Exterior","Parking, sidewalks, high windows","Pressure washing / windows as legitimate upsell"]];
+const SITS=[["The decision maker isn't there","No problem — I'm glad to walk with you. So the proposal lands with the right person: who reviews vendors, and would it help if we scheduled ten minutes with them to go over it?","Collect scope anyway; schedule the review with the decision maker before leaving."],["“I only have five minutes”","Then let's make them count. What made you start looking, and which two areas matter most? We'll walk those and I'll send the proposal by {pdate}.","Cut discovery and the walk — never the close."],["They ask for price while walking","Happy to talk numbers. So I'm accurate: how do you normally evaluate pricing — square footage, monthly, or a range you're working with? I'll have the exact number in the proposal by {pdate}.","Understand the structure; the number comes from approved pricing, not the hallway."],["They complain about the current provider","That sounds frustrating. How often has that been happening, and how has it affected your team?","Dig into impact; don't criticize. Write down their exact words for the proposal."],["Several people show up","Great — so I understand everyone's perspective: what does each of you need from the cleaning team day to day?","Identify who decides and who operates; both appear in the proposal."],["Very large property or multiple locations","Given the size, would it make sense to start with the areas that matter most today and treat the rest as a phase two? And are the other locations managed the same way?","Pilot + expansion. Record each location as an opportunity."],["“Can you match our current provider?”","That's helpful to know. Let me make sure I understand exactly what's included at that rate — scope and condition can make a real difference. If it's comparable, we'll look at the most appropriate structure.","Neither accept nor reject on site. Compare scope; consult approved pricing."],["“Just send a quick proposal, no need to review it”","Absolutely — I'll send it by {pdate}. I'd still like ten minutes to walk you through it, because the scope decisions are where the value is. Thursday or Friday?","A scheduled review is the difference between a proposal and a quote."]];
+const CARD=[["Person","So, what's your role here, and how long have you been with the company?"],["Person","Is it just you I'll be talking to about this, or is there anyone else who should be part of the conversation?"],["Discover","What made you decide to start looking at other options now?"],["Discover","If you could wave a magic wand and fix three things about how your space is cleaned today, what would they be?"],["Discover","What would a great partnership with a cleaning company actually look like, day to day, for you?"],["Discover","Walk me through how a decision like this usually happens here — who's involved, and what's the timeline?"],["Discover","Anything else going on — upcoming events, inspections, or other locations — that we should know about?"],["Walk","Which areas get the most traffic, or need the most attention?"],["Walk","Anything back here I should know about — chemicals, secure areas, or equipment we need to be careful around?"]];
+
+/* ---------- helpers ---------- */
+const say=t=>`<div class="say" data-tpl="${esc(t)}"></div>`;
+const noteF=(id,l)=>`<div class="field"><label>${esc(l)}</label><textarea data-s="${id}">${esc(S[id]||"")}</textarea></div>`;
+function renderSays(root){(root||document).querySelectorAll(".say[data-tpl]").forEach(el=>{const txt=fill(el.dataset.tpl).replace("{company2}",ctx().company==="[Company]"?"the company":ctx().company);el.innerHTML=esc(txt)+`<button class="copy" data-copy="${esc(txt)}">COPY</button>`})}
+document.addEventListener("click",async e=>{const c=e.target.closest(".copy");if(!c)return;try{await navigator.clipboard.writeText(c.dataset.copy)}catch(x){const ta=document.createElement("textarea");ta.value=c.dataset.copy;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(y){}ta.remove()}c.textContent="COPIED";c.classList.add("ok");setTimeout(()=>{c.textContent="COPY";c.classList.remove("ok")},1200)});
+
+/* ---------- nav ---------- */
+$("#nav").onclick=e=>{const b=e.target.closest("button");if(!b)return;$$("#nav button").forEach(x=>x.classList.toggle("on",x===b));$$("section").forEach(s=>s.classList.toggle("on",s.id==="t-"+b.dataset.t));S.tab=b.dataset.t;save();if(b.dataset.t==="after")exportNotes();window.scrollTo(0,0)};
+
+/* ---------- inputs persistence ---------- */
+document.addEventListener("input",e=>{const el=e.target;const id=el.id||el.dataset.s;if(!id)return;S[id]=el.value;save();renderSays();if(S.tab==="after")exportNotes()});
+$$("input[type=text],input[type=number],select").forEach(el=>{if(S[el.id]!=null)el.value=S[el.id]});
+$$(".scale").forEach(sc=>{const k=sc.dataset.scale;sc.innerHTML=[1,2,3,4,5].map(n=>`<button class="${S[k]==n?"on":""}" data-n="${n}">${n}</button>`).join("");sc.onclick=e=>{const b=e.target.closest("button");if(!b)return;S[k]=+b.dataset.n;save();sc.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));exportNotes()}});
+
+/* ---------- checklists ---------- */
+function bindCk(root){root.querySelectorAll(".ck").forEach(ck=>{const k=ck.dataset.ck;const done=S["ck_"+k]||[];ck.querySelectorAll("label").forEach((l,i)=>{const inp=l.querySelector("input");inp.checked=done.includes(i);l.classList.toggle("done",inp.checked)});const upd=()=>{const arr=[...ck.querySelectorAll("input")].map((x,i)=>x.checked?i:-1).filter(i=>i>=0);S["ck_"+k]=arr;save();ck.querySelectorAll("label").forEach(l=>l.classList.toggle("done",l.querySelector("input").checked));const p=$("#p_"+k);if(p)p.style.width=(100*arr.length/ck.querySelectorAll("input").length)+"%"};ck.onchange=upd;upd()})}
+bindCk(document);
+
+/* ---------- visit / stages ---------- */
+S.stage=S.stage||0;S.elapsed=S.elapsed||[0,0,0,0,0];let running=false,last=0,tick=null;
+function renderStages(){$("#stages").innerHTML=STAGES.map((s,i)=>`<button class="stage ${i===S.stage?"on":""} ${i<S.stage?"done":""}" data-i="${i}"><b>${s.n} · ${s.t}</b><span>${s.min} min</span></button>`).join("");const s=STAGES[S.stage];$("#tmtarget").textContent=`target ${s.min} min · ${s.t}`;$("#tstart").textContent=running?"Pause":"Start";updTimer();
+ let h=`<p class="lead">${esc(s.goal)}</p>`;if(s.say)h+=s.say.map(say).join("");
+ if(s.q)h+=s.q.map((q,i)=>`<div class="q"><div class="n">Question ${i+1}</div>${say(q.s)}<div class="rev"><b>Reveals:</b> ${esc(q.r)}</div>${q.l?`<div class="rev"><b>Listen for:</b> ${esc(q.l)}</div>`:""}</div>`).join("");
+ if(s.notes)h+=s.notes.map(([id,l])=>noteF(id,l)).join("");
+ if(s.obs){h+=`<h3>Observation checklist (you fill it — never ask out loud)</h3>`+OBS.map(([id,l,hint])=>`<div class="field"><label>${esc(l)} <span class="hint">· ${esc(hint)}</span></label><input type="text" data-s="${id}" value="${esc(S[id]||"")}"></div>`).join("")+`<h3>What to look at, by area</h3><table><tr><th>Area</th><th>Look at</th><th>Means</th></tr>${AREAS.map(a=>`<tr><td>${esc(a[0])}</td><td>${esc(a[1])}</td><td>${esc(a[2])}</td></tr>`).join("")}</table>`}
+ if(s.tips)h+=`<div class="box"><div class="lbl">On site</div>${s.tips.map(t=>`<p style="margin:4px 0;font-size:14px">${esc(fill(t))}</p>`).join("")}</div>`;
+ h+=`<div class="nba"><div class="lbl">Next</div>${S.stage<4?`Stage ${STAGES[S.stage+1].n} · ${esc(STAGES[S.stage+1].t)} — ${esc(STAGES[S.stage+1].goal)}`:"Leave with two dates. Then open After: evaluation, email, export notes."}</div>`;
+ $("#stagebody").innerHTML=h;renderSays();$$("#stagebody [data-s]").forEach(el=>{if(el.tagName==="INPUT"&&S[el.dataset.s]!=null)el.value=S[el.dataset.s]})}
+const fmt=ms=>{const t=Math.floor(ms/1000);return String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0")};
+function updTimer(){const e=S.elapsed[S.stage];const el=$("#tm");el.textContent=fmt(e);el.classList.toggle("over",e>STAGES[S.stage].min*60000);$("#ttotal").textContent="total "+fmt(S.elapsed.reduce((a,b)=>a+b,0))+" / 15–17 min"}
+function start(){if(running)return;running=true;last=Date.now();$("#tstart").textContent="Pause";tick=setInterval(()=>{const n=Date.now();S.elapsed[S.stage]+=n-last;last=n;save();updTimer()},500)}
+function pause(){running=false;clearInterval(tick);$("#tstart").textContent="Start"}
+$("#tstart").onclick=()=>running?pause():start();
+$("#tnext").onclick=()=>{if(S.stage<4){S.stage++;save();renderStages();if(running){last=Date.now()}}};
+$("#stages").onclick=e=>{const b=e.target.closest(".stage");if(!b)return;S.stage=+b.dataset.i;save();renderStages();if(running)last=Date.now()};
+renderStages();
+
+/* ---------- situations / card ---------- */
+$("#sits").innerHTML=SITS.map(s=>`<details><summary>${esc(s[0])}</summary><div class="in">${say(s[1])}<p class="hint" style="margin:4px 0 0">${esc(s[2])}</p></div></details>`).join("");
+$("#card").innerHTML=CARD.map((c,i)=>`<div class="q"><div class="n">${i+1} · ${esc(c[0])}</div>${say(c[1])}</div>`).join("")+`<div class="q"><div class="n">Close</div>${say("Here's what happens next: I'll have the proposal to you by {pdate}. Would {rdate} or [alternative] work better to go over it together?")}</div>`;
+renderSays();
+
+/* ---------- export ---------- */
+function exportNotes(){const c=ctx();const L=[];const add=(k,val)=>{if(val&&String(val).trim())L.push(k+": "+String(val).trim())};
+ L.push("WALKTHROUGH NOTES — "+new Date().toLocaleDateString());add("Company",c.company);add("Client",v("f_name"));add("Property",v("f_prop"));add("Address",v("f_addr"));add("Visit",v("f_when"));add("Hypothesis",v("f_hyp"));L.push("");
+ L.push("PERSON");add("Role / tenure",S.n_role);add("Decision makers",S.n_dm);L.push("");L.push("DISCOVERY");add("Why now",S.n_why);add("Magic wand (priorities)",S.n_wand);add("Great partnership",S.n_partner);add("Decision / budget / timeline",S.n_decision);add("Other locations / events",S.n_other);L.push("");
+ L.push("OBSERVATION");OBS.forEach(([id,l])=>add(l,S[id]));L.push("");L.push("EVALUATION");add("Close probability %",v("e_prob"));add("Urgency (1-5)",S.e_urg);add("Cultural fit (1-5)",S.e_fit);add("Long-term value",v("e_ltv"));add("Risks",v("e_risk"));add("Additional services",v("e_up"));L.push("");
+ L.push("NEXT STEPS");add("Proposal by",v("e_pdate"));add("Review call",v("e_rdate"));L.push("Time on site: "+fmt(S.elapsed.reduce((a,b)=>a+b,0)));
+ const out=L.join("\n");$("#exp_out").value=out;return out}
+$("#exp_copy").onclick=async()=>{const t=exportNotes();try{await navigator.clipboard.writeText(t)}catch(e){$("#exp_out").select();try{document.execCommand("copy")}catch(x){}}toast("Notes copied")};
+$("#exp_dl").onclick=()=>{const t=exportNotes();const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"text/plain"}));a.download="walkthrough-notes-"+new Date().toISOString().slice(0,10)+".txt";a.click()};
+$("#reset").onclick=()=>{if(!confirm("Clear all notes and start a new visit?"))return;const company=S.company,rep=S.f_rep;pause();S={company,f_rep:rep,stage:0,elapsed:[0,0,0,0,0]};save();location.reload()};
+
+/* ---------- restore tab ---------- */
+if(S.tab){const b=$(`#nav button[data-t="${S.tab}"]`);if(b)b.click()}
+</script>
+</body>
+</html>
