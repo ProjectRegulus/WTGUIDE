@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Walkthrough & Meeting Guide</title>
+<style>
+:root{--ink:#111;--g1:#3d3d3d;--g2:#757575;--g3:#c4c4c4;--g4:#e8e8e8;--g5:#f5f5f5;--w:#fff;--r:14px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--w);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.wrap{max-width:820px;margin:0 auto;padding:18px 18px 110px}
+header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--g4)}
+.brand{font-weight:700;font-size:16px;letter-spacing:-.01em}
+.brand small{display:block;font-weight:500;font-size:12px;color:var(--g2);letter-spacing:0}
+.hbtn{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.pill{border:1px solid var(--g4);background:var(--w);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;min-height:36px}
+.pill:hover{background:var(--g5)}
+.pill.dark{background:var(--ink);color:var(--w);border-color:var(--ink)}
+.pill.dark:hover{background:#2a2a2a}
+.steps{display:flex;gap:4px;margin:16px 0 6px}
+.steps button{flex:1;border:0;background:var(--g4);height:6px;border-radius:99px;padding:0}
+.steps button.done{background:#8a8a8a}
+.steps button.on{background:var(--ink)}
+.meta{display:flex;justify-content:space-between;font-size:12px;color:var(--g2);letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--g2);margin:26px 0 10px;font-weight:600}
+.lead{color:var(--g1);margin:0 0 14px;font-size:15.5px}
+.hint{font-size:13px;color:var(--g2)}
+.card{border:1px solid var(--g4);border-radius:var(--r);padding:16px 18px;margin:10px 0;background:var(--w)}
+.card.soft{background:var(--g5);border-color:var(--g5)}
+.card.dark{background:var(--ink);color:var(--w);border-color:var(--ink)}
+.card.dark .hint,.card.dark .lab{color:#b5b5b5}
+.lab{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--g2);font-weight:600;margin-bottom:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.say{position:relative;background:var(--g5);border-radius:12px;padding:12px 92px 12px 14px;margin:8px 0;font-size:14.5px;white-space:pre-line}
+.say .who{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);font-weight:600;margin-bottom:2px}
+.say.them{background:var(--w);border:1px solid var(--g4)}
+.copy{position:absolute;right:10px;top:10px;border:1px solid var(--g3);background:var(--w);border-radius:999px;padding:5px 12px;font-size:11.5px;font-weight:600}
+.copy.ok{background:var(--ink);color:var(--w);border-color:var(--ink)}
+.rev{font-size:13.5px;color:var(--g1);margin:3px 0 0 2px}
+.rev b{color:var(--ink)}
+ul.clean{margin:0;padding-left:18px}
+ul.clean li{margin:4px 0}
+.ck label{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--g4);cursor:pointer}
+.ck label:last-child{border-bottom:0}
+.ck input{width:20px;height:20px;margin-top:1px;accent-color:#111;flex:none}
+.ck label.done span{color:var(--g2);text-decoration:line-through}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--g2);padding:8px 10px;border-bottom:1px solid var(--ink);font-weight:600}
+td{padding:10px;border-bottom:1px solid var(--g4);vertical-align:top}
+td:first-child{font-weight:600}
+.tscroll{overflow-x:auto}
+details{border-bottom:1px solid var(--g4)}
+details:first-of-type{border-top:1px solid var(--g4)}
+summary{cursor:pointer;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:10px;font-weight:600}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--g2);font-weight:400;font-size:18px;line-height:1}
+details[open] summary:after{content:"–"}
+details .in{padding:0 0 14px}
+.niches{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.niches.three{grid-template-columns:repeat(3,1fr)}
+.niche{text-align:left;border:1px solid var(--g4);background:var(--w);border-radius:var(--r);padding:16px}
+.niche:hover{border-color:var(--g3)}
+.niche.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.niche b{display:block;font-size:15.5px;margin-bottom:3px}
+.niche span{font-size:13px;color:var(--g2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--g3);background:var(--w);border-radius:999px;padding:8px 13px;font-size:13px;font-weight:600}
+.chip.on{background:var(--ink);color:var(--w);border-color:var(--ink)}
+.field{margin:10px 0}
+.field label{display:block;font-size:13px;color:var(--g1);margin-bottom:5px;font-weight:600}
+input[type=text],input[type=number],textarea,select{width:100%;border:1px solid var(--g3);border-radius:12px;padding:11px 12px;background:var(--w)}
+textarea{min-height:92px;resize:vertical}
+.note{border:1.5px solid var(--ink);border-radius:var(--r);padding:14px 16px;margin:16px 0}
+.note .n{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--g2);font-weight:600}
+.note b.t{display:block;font-size:16px;margin:2px 0 8px}
+.note .ex{font-size:12.5px;color:var(--g2);margin-top:8px}
+.est{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.big{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.foot{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-top:1px solid var(--g4);padding:10px 18px;z-index:5}
+.foot .in{max-width:820px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;font-size:15px;border:1px solid var(--g4);border-radius:999px;padding:7px 14px;background:var(--w)}
+.timer.on{border-color:var(--ink)}
+.sum{border:1.5px solid var(--ink);border-radius:var(--r);padding:16px 18px;font-size:13.5px}
+.sum .h{display:flex;justify-content:space-between;gap:8px;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:8px;margin-bottom:8px}
+.sum .h b{font-size:15px}
+.sum .h span{font-size:11.5px;color:var(--g2)}
+.sum .i{display:grid;grid-template-columns:120px 1fr;gap:0 12px;padding:7px 0;border-bottom:1px solid var(--g4)}
+.sum .i:last-child{border:0}
+.sum .i b{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--g2);padding-top:2px}
+.sum .i span{white-space:pre-line}
+.sum .i span.miss{color:var(--g3)}
+.tag{display:inline-block;border:1px solid var(--ink);border-radius:999px;padding:2px 10px;font-size:11px;font-weight:600;letter-spacing:.04em;margin:0 4px 4px 0}
+.toast{position:fixed;bottom:82px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--w);padding:9px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.2s;z-index:9}
+.toast.on{opacity:1}
+@media(max-width:620px){
+ .grid2,.niches,.niches.three{grid-template-columns:1fr}
+ .est{grid-template-columns:1fr 1fr}
+ .say{padding-right:14px;padding-bottom:46px}
+ .copy{top:auto;bottom:10px}
+ .sum .i{grid-template-columns:1fr}
+ .sum .i b{margin-top:4px}
+ h1{font-size:22px}
+}
+@media print{.foot,.hbtn,.steps,.meta,.toast{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div class="brand" id="brand"></div>
+ <div class="hbtn">
+  <input type="text" id="company" placeholder="Your company" aria-label="Your company" style="width:160px;padding:8px 12px;border-radius:999px">
+  <button class="pill" id="lang">ES</button>
+  <button class="pill" id="toSum"></button>
+  <button class="pill" id="reset"></button>
+ </div>
+</header>
+<div class="steps" id="steps"></div>
+<div class="meta"><span id="sname"></span><span id="scount"></span></div>
+<main id="main"></main>
+</div>
+<div class="foot"><div class="in"><button class="pill" id="back"></button><button class="timer" id="timer" title="Start / pause">00:00</button><button class="pill dark" id="next"></button></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= STORAGE ================= */
+const KEY="wtguide:v4";
+let S={};try{S=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+S.lang=S.lang||"en";S.step=S.step||0;S.elapsed=S.elapsed||0;S.niche=S.niche||"";
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const g=k=>(S[k]??"").toString().trim();
+const L=o=>typeof o==="string"?o:(o[S.lang]||o.en);
+const pad=n=>String(n).padStart(2,"0");
+const localDate=()=>{const d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove("on"),1300)}
+
+/* ================= UI STRINGS ================= */
+const U={
+ brand:{en:"Walkthrough & Meeting Guide",es:"Guía de Walkthrough y Reuniones"},
+ brandSub:{en:"Prepare · Connect · Ask · Walk · Close",es:"Preparar · Conectar · Preguntar · Recorrer · Cerrar"},
+ summary:{en:"Summary",es:"Resumen"},newVisit:{en:"New visit",es:"Nueva visita"},
+ back:{en:"← Back",es:"← Atrás"},next:{en:"Next →",es:"Siguiente →"},toSummary:{en:"Summary →",es:"Resumen →"},done:{en:"Done ✓",es:"Listo ✓"},
+ you:{en:"You",es:"Tú"},client:{en:"Client",es:"Cliente"},copy:"COPY",copied:"COPIED",
+ reveals:{en:"Reveals:",es:"Revela:"},listen:{en:"Listen for:",es:"Escucha por:"},example:{en:"Example:",es:"Ejemplo:"},
+ confirmReset:{en:"Start a new visit? All notes will be cleared. Your company name stays.",es:"¿Empezar una nueva visita? Se borran todas las notas. El nombre de tu empresa se queda."},
+ cleared:{en:"New visit started",es:"Nueva visita iniciada"},copiedAll:{en:"Summary copied",es:"Resumen copiado"},
+ pickNiche:{en:"Pick the meeting type and the client type first",es:"Elige primero el tipo de reunión y de cliente"},
+ startTimer:{en:"Start timer",es:"Iniciar cronómetro"},running:{en:"Running",es:"Corriendo"}
+};
+
+/* ================= NICHES ================= */
+const NICHES={
+ office:{name:{en:"Office & commercial",es:"Oficinas y comercial"},tag:{en:"Offices, clinics, retail, facilities. Closes in steps: walkthrough, proposal, review.",es:"Oficinas, clínicas, retail, instalaciones. Se cierra por pasos: walkthrough, propuesta, revisión."},
+  know:[["Janitorial",{en:"Recurring cleaning on a set schedule, usually after hours",es:"Limpieza recurrente con horario fijo, normalmente after-hours"}],["Day porter",{en:"Staff on site during business hours for restrooms, lobby, spills",es:"Personal en sitio en horario laboral para baños, lobby, derrames"}],["Scope of work",{en:"Written list of tasks by area and frequency",es:"Lista escrita de tareas por área y frecuencia"}],["Consumables",{en:"Paper, soap, liners: who provides them changes the price",es:"Papel, jabón, bolsas: quién los pone cambia el precio"}],["COI / W-9",{en:"Insurance certificate and tax form most companies require",es:"Certificado de seguro y formulario fiscal que piden casi todas las empresas"}],["High-touch points",{en:"Door handles, switches, rails, counters; key for clinics",es:"Manijas, apagadores, barandales, mostradores; clave en clínicas"}],["Terminal clean",{en:"Full disinfection of a medical room; ask if they need it",es:"Desinfección completa de un cuarto médico; pregunta si lo necesitan"}],["Floor care",{en:"Strip and wax, scrub, burnish; usually quoted separately",es:"Strip and wax, scrub, burnish; normalmente se cotiza aparte"}]],
+  ask:["How many nights a week are you running today, and does that include restrooms and break rooms?","Would you want a day porter during business hours, or after-hours only?","Who provides the paper and soap today?","Is there a supervisor walk or quality inspection your team expects?","Are there areas like server rooms or exam rooms with special rules?"],
+  quote:{en:"Recurring janitorial 5x/week after 6pm · ~8,000 sq ft, 1 floor, 6 restrooms, 1 break room · VCT worn in hallway, carpet in offices · they supply paper, we bring the rest · key + alarm code · start Oct 1 · condition 3/5 · 12 photos",es:"Janitorial recurrente 5x/semana después de las 6pm · ~8,000 sq ft, 1 piso, 6 baños, 1 cocina · VCT gastado en pasillo, alfombra en oficinas · ellos ponen papel, nosotros lo demás · llave + código de alarma · inicio 1 de oct · condición 3/5 · 12 fotos"},
+  services:["Recurring janitorial","Day porter","Initial deep clean","Floor care (strip & wax)","Carpet cleaning","Window cleaning","High-touch disinfection","Restroom program"]},
+ pm:{name:{en:"Property management",es:"Property management"},tag:{en:"Apartments, HOAs, multifamily. Turnovers, common areas, one point of contact.",es:"Apartamentos, HOAs, multifamiliar. Turnovers, áreas comunes, un solo contacto."},
+  know:[["Turnover / make-ready",{en:"Getting a unit ready for the next resident after move-out",es:"Dejar una unidad lista para el siguiente residente después del move-out"}],["Move-out / move-in clean",{en:"Deep clean of an empty unit: cabinets, appliances, baths, floors",es:"Limpieza profunda de unidad vacía: gabinetes, electrodomésticos, baños, pisos"}],["Unit inspection",{en:"The manager's check before handing over the unit",es:"La revisión del manager antes de entregar la unidad"}],["Common areas / amenities",{en:"Lobby, hallways, gym, pool, clubhouse, laundry",es:"Lobby, pasillos, gimnasio, piscina, clubhouse, lavandería"}],["Work order",{en:"Formal job request inside their system",es:"Solicitud formal de trabajo dentro de su sistema"}],["Vacancy",{en:"Empty units; more vacancy means more turnovers for you",es:"Unidades vacías; más vacancy significa más turnovers para ti"}],["Vendor compliance",{en:"NetVendor, RealPage, Avetta, Compliance Depot. Prequalified is not approved",es:"NetVendor, RealPage, Avetta, Compliance Depot. Precalificado no es aprobado"}],["Portfolio / regional",{en:"Regional managers control several properties; win one, ask for the next",es:"El regional controla varias propiedades; gana una y pide la siguiente"}]],
+  ask:["How many turnovers do you average in a month, and what's your make-ready window?","Who issues the work orders, and who approves the invoice?","What does your team check on the unit inspection?","What are residents complaining about most right now?","If it works here, would the same standard apply across the portfolio?"],
+  quote:{en:"Turnovers: ~12/month, mostly 1BR and 2BR · 3 day make-ready window · work orders from leasing office, Sarah approves invoices · inspection checks inside oven, fridge, cabinets, baseboards · common areas 3x/week: lobby, 2 halls, gym, laundry · registered in RealPage, need COI · start Nov 1",es:"Turnovers: ~12/mes, mayormente 1 y 2 recámaras · ventana de make-ready de 3 días · work orders desde leasing, Sarah aprueba facturas · inspección revisa horno, refri, gabinetes, zócalos · áreas comunes 3x/semana: lobby, 2 pasillos, gimnasio, lavandería · registrados en RealPage, piden COI · inicio 1 de nov"},
+  services:["Unit turnovers","Move-out cleans","Common areas recurring","Carpet cleaning","Window cleaning","Pressure washing","Trash valet areas","Amenity deep clean"]},
+ construction:{name:{en:"Post-construction",es:"Post-construcción"},tag:{en:"General contractors and builders. Phases, dates and condition first, price second.",es:"Contratistas y constructoras. Fases, fechas y condición primero, precio después."},
+  know:[["Rough clean",{en:"During the build: large debris, sweeping, heavy dust. Can repeat",es:"Durante la obra: escombro grande, barrido, polvo grueso. Puede repetirse"}],["Final clean",{en:"End of build, before handover: every surface in detail, stickers, inside cabinets",es:"Fin de obra, antes de la entrega: todo en detalle, stickers, gabinetes por dentro"}],["Touch-up (fluff) clean",{en:"Right before handover, after punch list: fingerprints and new dust",es:"Justo antes de entregar, después del punch list: huellas y polvo nuevo"}],["Punch list",{en:"Final list of pending items; your touch-up goes after it",es:"Lista final de pendientes; tu touch-up va después"}],["Substantial completion",{en:"Date the project is usable; your final clean window",es:"Fecha en que la obra se puede usar; tu ventana de final clean"}],["CO",{en:"Certificate of occupancy; often needs the cleaning done",es:"Certificado de ocupación; suele requerir la limpieza hecha"}],["Superintendent",{en:"Runs the site day to day; your operating contact",es:"Coordina el sitio día a día; tu contacto operativo"}],["Change order",{en:"Change to the original scope; extra work goes in writing",es:"Cambio al alcance original; el trabajo extra va por escrito"}]],
+  ask:["Are we talking rough clean, final clean, or the touch-up after punch list?","What's the substantial completion date you're working toward?","Who's the superintendent I should coordinate with on site?","Is debris removal on us, or is there a dumpster and haul-off already?","Are windows getting sticker and label removal, and is the protective film still on?"],
+  quote:{en:"Final clean + touch-up · 12,500 sq ft, 2 floors, 8 restrooms · heavy drywall dust, stickers on 40 windows, film on floors · dumpster on site, debris theirs · super: Mike · substantial completion Nov 14, CO inspection Nov 18 · night work OK · photos taken",es:"Final clean + touch-up · 12,500 sq ft, 2 pisos, 8 baños · mucho polvo de drywall, stickers en 40 ventanas, película en pisos · contenedor en sitio, escombro de ellos · super: Mike · substantial completion 14 nov, inspección CO 18 nov · se puede de noche · fotos tomadas"},
+  services:["Rough clean","Final clean","Touch-up clean","Window & sticker removal","Floor scrub & protect","Pressure washing","Debris haul-off","Recurring after handover"]},
+ residential:{name:{en:"Residential",es:"Residencial"},tag:{en:"Homes and apartments. Closes on the same visit: recommend, price, book.",es:"Casas y departamentos. Se cierra en la misma visita: recomendar, cotizar, reservar."},
+  know:[["Deep clean",{en:"Full reset: detailed baths, kitchen, baseboards, high dusting",es:"Reset completo: baños detallados, cocina, zócalos, polvo alto"}],["Standard / maintenance",{en:"Recurring clean that keeps the home at that level",es:"Limpieza recurrente que mantiene la casa en ese nivel"}],["Move-in / move-out",{en:"Empty home: inside cabinets, oven, fridge; ready for landlord walkthrough",es:"Casa vacía: gabinetes, horno, refri por dentro; lista para el landlord"}],["Recurring",{en:"Weekly, biweekly, monthly. Biweekly is the usual sweet spot",es:"Semanal, quincenal, mensual. Quincenal suele ser el punto ideal"}],["Add-ons",{en:"Inside oven, inside fridge, interior windows, laundry",es:"Horno por dentro, refri por dentro, ventanas interiores, lavandería"}],["Pet hair treatment",{en:"Extra attention on upholstery and floors where pets live",es:"Atención extra en muebles y pisos donde hay mascotas"}]],
+  ask:["Tell me a bit about the house and what's going on right now.","Which parts of the house bother you most?","When was the last time it had a real deep clean?","Anything you'd like us to pay special attention to?","Will someone be home, or should we plan on a code or a key?"],
+  quote:{en:"Deep clean then biweekly · 3 bed, 2 bath, ~1,800 sq ft · hasn't had a deep clean in a year · 2 dogs, pet hair on couch · wants inside oven + fridge · garage code 4417 · priorities: kitchen, master bath · start next Thursday",es:"Deep clean y luego quincenal · 3 recámaras, 2 baños, ~1,800 sq ft · sin deep clean hace un año · 2 perros, pelo en el sillón · quiere horno + refri por dentro · código de garaje 4417 · prioridades: cocina, baño principal · inicio el próximo jueves"},
+  services:["Deep clean","Biweekly recurring","Weekly recurring","Move-out clean","Inside oven & fridge","Interior windows","Pet hair treatment","Post-renovation clean"]}
+};
+const N=()=>NICHES[S.niche]||NICHES.office;
+const fill=t=>t.replace(/\[Company\]/g,g("company")||"[Company]");
+
+/* ================= HELPERS ================= */
+const say=(t,who)=>{const tt=fill(t);return `<div class="say ${who==="them"?"them":""}"><span class="who">${L(who==="them"?U.client:U.you)}</span>${esc(tt)}<button class="copy" data-copy="${esc(tt)}">${U.copy}</button></div>`};
+const Q=(n,s,r,l)=>`<div style="margin:14px 0"><div class="lab">${n}</div>${say(s)}${r?`<div class="rev"><b>${L(U.reveals)}</b> ${r}</div>`:""}${l?`<div class="rev"><b>${L(U.listen)}</b> ${l}</div>`:""}</div>`;
+const CK=(id,items)=>`<div class="ck" data-ck="${id}">${items.map((t,i)=>{const on=(S["ck_"+id]||[]).includes(i);return `<label class="${on?"done":""}"><input type="checkbox" ${on?"checked":""}><span>${t}</span></label>`}).join("")}</div>`;
+const NOTE=(id,n,t,ex)=>`<div class="note"><div class="n">${n}</div><b class="t">${t}</b><textarea data-s="${id}" placeholder="${esc(ex)}">${esc(g(id))}</textarea><div class="ex">${L(U.example)} <i>${esc(ex)}</i></div></div>`;
+const TABLE=(head,rows)=>`<div class="tscroll"><table><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</table></div>`;
+const ACC=(items)=>items.map(([q,body])=>`<details><summary>${q}</summary><div class="in">${body}</div></details>`).join("");
+const es=()=>S.lang==="es";
+
+/* ================= DEEP CONTENT ================= */
+const TECH=[
+{n:"Layered open questions",ne:"Preguntas abiertas en capas",
+ what:{en:"One broad question that invites a story, followed by follow-ups on what they actually said.",es:"Una pregunta amplia que invita a contar una historia, seguida de preguntas sobre lo que realmente dijeron."},
+ why:{en:"People defend themselves against interrogations but open up when they tell a story. In one answer they give you the problem, the history, the people involved and the urgency, and they feel heard instead of evaluated.",es:"La gente se defiende de un interrogatorio pero se abre cuando cuenta una historia. En una sola respuesta te da el problema, la historia, las personas involucradas y la urgencia, y se siente escuchada en vez de evaluada."},
+ how:{en:["Start with what, how or tell me","Ask one question, then stop talking","Pick the most important word in their answer and ask about it","Repeat back what you understood","Only then ask closed questions for missing facts (sq ft, days, start date)"],es:["Empieza con qué, cómo o cuénteme","Haz una sola pregunta y deja de hablar","Toma la palabra más importante de su respuesta y pregunta por ella","Repite lo que entendiste","Solo entonces haz preguntas cerradas para los datos que faltan (sq ft, días, fecha)"]},
+ ex:["Tell me a little about the building and what's happening with the cleaning right now.","You said it's been inconsistent. What does a bad week look like?","Walk me through how a decision like this usually happens here."],
+ avoid:{en:"Opening with “How many square feet?” or firing four closed questions in a row.",es:"Abrir con “¿Cuántos pies cuadrados?” o disparar cuatro preguntas cerradas seguidas."}},
+{n:"Labeling",ne:"Labeling (etiquetar)",
+ what:{en:"Saying out loud the emotion or concern you hear behind their words.",es:"Decir en voz alta la emoción o preocupación que escuchas detrás de sus palabras."},
+ why:{en:"When a concern is named, it loses intensity. The client feels understood, lowers their guard and usually corrects or expands it, which gives you more information. It also shows you were listening, which builds trust faster than any credential.",es:"Cuando una preocupación se nombra, pierde intensidad. El cliente se siente entendido, baja la guardia y normalmente la corrige o la amplía, lo que te da más información. También demuestra que escuchaste, y eso genera confianza más rápido que cualquier credencial."},
+ how:{en:["Start with “It sounds like…”, “It seems…” or “It looks like…”","Never say “I hear you're saying” or “I understand you feel”","Say it, then stay quiet and let them respond","If you got it wrong, that's fine: they'll correct you and tell you more"],es:["Empieza con “It sounds like…”, “It seems…” o “It looks like…”","Nunca digas “I hear you're saying” o “I understand you feel”","Dilo y quédate callado para que respondan","Si te equivocas no pasa nada: te corrigen y te cuentan más"]},
+ ex:["It sounds like consistency is extremely important to your team.","It seems like your biggest concern is not going through another bad experience.","It sounds like you're the one getting the complaints when this goes wrong.","It seems like timing on this project is tighter than anyone expected."],
+ avoid:{en:"Labeling with judgment (“It sounds like your current company is terrible”). Label their feeling, not your opinion.",es:"Etiquetar con juicio (“Parece que su empresa actual es terrible”). Etiqueta su sentimiento, no tu opinión."}},
+{n:"Mirroring",ne:"Mirroring (espejo)",
+ what:{en:"Repeating the last one to three important words they said, with a curious tone, and then staying silent.",es:"Repetir las últimas una a tres palabras importantes que dijeron, con tono de curiosidad, y luego quedarte callado."},
+ why:{en:"It invites the person to keep talking without feeling questioned. They naturally explain more and often reveal the detail that matters most: the incident, the cost, the person who complained.",es:"Invita a la persona a seguir hablando sin sentirse interrogada. Naturalmente explica más y muchas veces revela el detalle que más importa: el incidente, el costo, la persona que se quejó."},
+ how:{en:["Pick the emotionally loaded word","Repeat it as a soft question","Wait at least four seconds","Use it two or three times per visit, not every sentence"],es:["Elige la palabra con más carga emocional","Repítela como pregunta suave","Espera al menos cuatro segundos","Úsalo dos o tres veces por visita, no en cada frase"]},
+ ex:["Client: “We've had a lot of issues with communication.” You: “Communication?”","Client: “They just don't show up on Fridays.” You: “Don't show up on Fridays?”","Client: “The owner walked in and saw it.” You: “The owner saw it?”"],
+ avoid:{en:"Mirroring everything like a parrot, or using a flat tone that sounds sarcastic.",es:"Repetir todo como perico, o usar un tono plano que suena sarcástico."}},
+{n:"Feel · Felt · Found",ne:"Feel · Felt · Found",
+ what:{en:"A three-part answer to objections: acknowledge how they feel, share that others felt the same, and tell what those clients found.",es:"Respuesta en tres partes para objeciones: reconoce cómo se siente, comparte que otros se sintieron igual y cuenta lo que esos clientes descubrieron."},
+ why:{en:"It avoids confrontation. Instead of telling the client they're wrong, you put them next to other people who had the same doubt and made a good decision. It turns an argument into a story.",es:"Evita la confrontación. En vez de decirle al cliente que está equivocado, lo pones al lado de otras personas que tuvieron la misma duda y tomaron una buena decisión. Convierte una discusión en una historia."},
+ how:{en:["Feel: acknowledge without agreeing it's a deal breaker","Felt: other clients had the same concern","Found: the specific result they got","Close with a question that moves forward"],es:["Feel: reconoce sin aceptar que sea un impedimento","Felt: otros clientes tuvieron la misma preocupación","Found: el resultado concreto que obtuvieron","Cierra con una pregunta que avance"]},
+ ex:["I completely understand how you feel. Several property managers felt the same way when they compared us on price. What they found was that one reliable crew meant fewer re-cleans and fewer resident complaints. Can I show you what's included so you're comparing the same thing?","I understand. A lot of owners felt that switching providers would be a hassle. What they found was that we handled the transition in one week without them lifting a finger."],
+ avoid:{en:"Using it word for word every time, or inventing results you can't back up.",es:"Usarlo palabra por palabra siempre, o inventar resultados que no puedes respaldar."}},
+{n:"Calibrated questions",ne:"Preguntas calibradas",
+ what:{en:"How and what questions that put the client in the role of solving the problem with you.",es:"Preguntas de cómo y qué que ponen al cliente en el rol de resolver el problema contigo."},
+ why:{en:"They can't be answered with yes or no, they don't sound like pressure, and they make the client think about the solution instead of defending their position.",es:"No se pueden contestar con sí o no, no suenan a presión y hacen que el cliente piense en la solución en vez de defender su postura."},
+ how:{en:["Start with how or what, never why (why sounds like an accusation)","Ask them when you face resistance or a stuck decision","Listen to the answer: it's their own plan to say yes"],es:["Empieza con cómo o qué, nunca por qué (por qué suena a acusación)","Úsalas cuando hay resistencia o una decisión trabada","Escucha la respuesta: es su propio plan para decir que sí"]},
+ ex:["What would need to happen for this to be an easy decision?","How would you like us to handle it if something isn't right?","What's the biggest challenge you see in making a change right now?","How does this usually get approved on your side?"],
+ avoid:{en:"“Why haven't you switched yet?” It puts them on the defensive.",es:"“¿Por qué no han cambiado todavía?” Los pone a la defensiva."}},
+{n:"Impact questions",ne:"Preguntas de impacto",
+ what:{en:"Questions that make the client put into words what the problem is costing them.",es:"Preguntas que hacen que el cliente ponga en palabras lo que le está costando el problema."},
+ why:{en:"Price only feels high when the problem feels small. When the client says out loud the time, complaints and risk the problem creates, your proposal becomes the cheaper option.",es:"El precio solo se siente alto cuando el problema se siente pequeño. Cuando el cliente dice en voz alta el tiempo, las quejas y el riesgo que le genera el problema, tu propuesta se vuelve la opción más barata."},
+ how:{en:["Ask after they name a problem, not before","Go for time, money, reputation and stress","Repeat the impact back in your summary"],es:["Pregunta después de que nombren un problema, no antes","Busca tiempo, dinero, reputación y estrés","Repite el impacto en tu resumen"]},
+ ex:["How has that affected your team, complaints, extra work, anything like that?","How much time does your office spend chasing the current crew each week?","What happens if a unit isn't ready on move-in day?","What would it mean for you if that were solved?"],
+ avoid:{en:"Exaggerating their problem for them. Let them say it.",es:"Exagerar el problema por ellos. Deja que lo digan."}},
+{n:"Strategic silence",ne:"Silencio estratégico",
+ what:{en:"Staying quiet for four to six seconds after an important question or after saying the price.",es:"Quedarte callado cuatro a seis segundos después de una pregunta importante o después de decir el precio."},
+ why:{en:"Silence makes people fill the space, and what they say next is usually the most honest part. After the price, silence shows confidence; talking shows doubt.",es:"El silencio hace que la gente llene el espacio, y lo siguiente que dicen suele ser lo más honesto. Después del precio, el silencio muestra seguridad; hablar muestra duda."},
+ how:{en:["Ask, then count to four in your head","Look at your notes or at them, calmly","After the price: say it once and stop","If they stay silent too, ask “What are you thinking?”"],es:["Pregunta y cuenta hasta cuatro en tu mente","Mira tus notas o a la persona, con calma","Después del precio: dilo una vez y detente","Si también se quedan callados, pregunta “What are you thinking?”"]},
+ ex:["The investment for the full scope is [rate] per month. [silence]","What made you start looking now? [silence]"],
+ avoid:{en:"Filling the pause with discounts or justifications.",es:"Llenar la pausa con descuentos o justificaciones."}},
+{n:"Summarize and confirm",ne:"Resumir y confirmar",
+ what:{en:"Repeating their situation and priorities in your words before you recommend anything.",es:"Repetir su situación y prioridades con tus palabras antes de recomendar algo."},
+ why:{en:"It proves you listened, it lets them correct mistakes before they end up in the proposal, and it creates a series of small yeses that make the final yes natural.",es:"Prueba que escuchaste, les permite corregir errores antes de que lleguen a la propuesta y crea una serie de pequeños síes que hacen natural el sí final."},
+ how:{en:["Use their exact words for the problem","List priorities in their order","End with “Did I get that right?”","Then connect each priority to your solution"],es:["Usa sus palabras exactas para el problema","Enumera prioridades en su orden","Termina con “Did I get that right?”","Luego conecta cada prioridad con tu solución"]},
+ ex:["Just to make sure I understand: the main issue is missed nights, what matters most is spotless restrooms, and you'd like to start by the 1st. Did I get that right?","So: restrooms, response time, and the same crew, in that order."],
+ avoid:{en:"Summarizing in your own sales language instead of their words.",es:"Resumir con tu lenguaje de ventas en vez de sus palabras."}},
+{n:"Preempt the objection",ne:"Adelantarte a la objeción",
+ what:{en:"Naming the most likely objection before the client does.",es:"Nombrar la objeción más probable antes de que el cliente la diga."},
+ why:{en:"When you say it first, it loses its weight and you control how it's framed. It also signals honesty, which is rare in sales.",es:"Cuando la dices primero, pierde peso y tú controlas cómo se plantea. También transmite honestidad, que es rara en ventas."},
+ how:{en:["Use it when you're fairly sure the objection is coming","Say it calmly, then explain in one sentence","Move to a question right away"],es:["Úsalo cuando estés casi seguro de que viene la objeción","Dilo con calma y explica en una frase","Pasa a una pregunta de inmediato"]},
+ ex:["You might be thinking we'll be more expensive than your current company, and we may be. The difference is in what's included. Can I walk you through it?","You're probably wondering if switching will be a headache. Here's exactly how the first week works."],
+ avoid:{en:"Raising objections the client would never have thought of.",es:"Sacar objeciones que el cliente nunca habría pensado."}}
+];
+
+const QBANK=[
+{c:{en:"Situation",es:"Situación"},w:{en:"Understand how they operate today. Ask these first.",es:"Entender cómo operan hoy. Pregúntalas primero."},q:["Tell me a little about the building and how it's used day to day.","How is the cleaning handled right now?","How long have you been working with your current provider?","How many people use the space on a typical day?"]},
+{c:{en:"Problem",es:"Problema"},w:{en:"Find what isn't working. The real reason is rarely the first answer.",es:"Encontrar qué no funciona. El motivo real casi nunca es la primera respuesta."},q:["What made you start looking at other options now?","What's been the biggest challenge with the current service?","If you could change one thing about it, what would it be?","When something goes wrong, what usually happens?"]},
+{c:{en:"Impact",es:"Impacto"},w:{en:"Make the cost of the problem visible. This is what makes your price feel fair.",es:"Hacer visible el costo del problema. Esto es lo que hace que tu precio se sienta justo."},q:["How has that affected your team?","Who hears about it when the cleaning isn't done?","Has that created any complaints from tenants, patients or customers?","What would it mean for you if that were solved?"]},
+{c:{en:"Priorities",es:"Prioridades"},w:{en:"Learn what to emphasize in the proposal and in what order.",es:"Saber qué destacar en la propuesta y en qué orden."},q:["If you could fix three things about how the space is cleaned, what would they be?","What matters most to you when choosing a cleaning company?","What would a great partnership look like day to day?","How would you like to communicate with us, and how often?"]},
+{c:{en:"Decision",es:"Decisión"},w:{en:"Know who decides and how, without asking “are you the decision maker?”.",es:"Saber quién decide y cómo, sin preguntar “¿usted decide?”."},q:["Walk me through how a decision like this usually happens here.","Who else should be part of the conversation?","Is there a vendor approval process we should go through?","What did you like about how the last provider was chosen?"]},
+{c:{en:"Budget",es:"Presupuesto"},w:{en:"Understand their pricing context. Price is part of discovery, not a separate fight.",es:"Entender su contexto de precio. El precio es parte del descubrimiento, no una pelea aparte."},q:["How do you normally price this today?","What's included in what you pay now?","Is there a range you're working with, or are you still evaluating?","Is that a firm budget, or is there flexibility depending on scope?"]},
+{c:{en:"Timeline",es:"Tiempos"},w:{en:"Find the real deadline. It's often mentioned in passing.",es:"Encontrar la fecha límite real. Muchas veces la dicen de pasada."},q:["When would you ideally like to start?","Is there something driving that date, a contract, an inspection, an opening?","When does your current agreement come up for renewal?","What happens if it isn't in place by then?"]},
+{c:{en:"Expansion",es:"Expansión"},w:{en:"Discover the account behind the account.",es:"Descubrir la cuenta detrás de la cuenta."},q:["Anything else going on, events, inspections, other locations?","Are the other properties managed the same way?","Are there services you handle separately today, like floors or windows?","Who else in your network deals with the same issues?"]}
+];
+
+const OBJ=[
+{o:"Your price is higher than what we pay.",m:{en:"They're comparing a number without comparing the scope. Or they want to know if there's flexibility.",es:"Comparan un número sin comparar el alcance. O quieren saber si hay flexibilidad."},s:"I completely understand. Several of our clients felt the same way when comparing. What they found was that the difference was in what's included and in how reliable the service is. Can I ask what's included in what you pay today?",f:"If we matched the scope line by line, would price still be the main concern?",a:{en:"Dropping the rate on the spot. Reduce the scope instead.",es:"Bajar la tarifa en el momento. Reduce el alcance."}},
+{o:"We already have a cleaning company.",m:{en:"It's a timing question, not a no. Almost everyone has a provider.",es:"Es una pregunta de timing, no un no. Casi todos tienen proveedor."},s:"That makes sense, most of our clients had a provider before us too. How has it been working for you?",f:"When does your current agreement come up for renewal? Would it be alright if I reached back out before that?",a:{en:"Criticizing the current company.",es:"Criticar a la empresa actual."}},
+{o:"I need to think about it.",m:{en:"Something is unclear or someone else is involved. Rarely about time.",es:"Algo no está claro o hay alguien más involucrado. Rara vez es por tiempo."},s:"Of course. It sounds like you want to make the best long-term decision. What part would you like to think through, the scope, the timing, or the investment?",f:"What would make this an easy yes for you?",a:{en:"Pressuring, or leaving without a date.",es:"Presionar o irte sin fecha."}},
+{o:"I need to talk to my partner / boss.",m:{en:"There's another decision maker you haven't met.",es:"Hay otro decisor que no conoces."},s:"That makes sense. What do you think will matter most to them?",f:"Would it help if I joined a quick call with both of you so we can answer questions directly? Would Thursday or Friday work?",a:{en:"Letting them present your proposal alone.",es:"Dejar que presenten tu propuesta solos."}},
+{o:"Just send me a proposal.",m:{en:"They want to compare, or end the meeting politely.",es:"Quieren comparar, o terminar la reunión con cortesía."},s:"Absolutely, I'll have it to you by Thursday. I'd still like ten minutes to walk you through it, because the scope decisions are where the value is.",f:"Would Thursday at 2 or Friday at 10 work better?",a:{en:"Sending it and waiting.",es:"Enviarla y esperar."}},
+{o:"Can you give me a number right now?",m:{en:"They want a reference to compare, or to see if you're in range.",es:"Quieren una referencia para comparar, o ver si estás en rango."},s:"I'd rather give you an accurate number than a guess. Is there a range you're working with? That helps me structure it the right way.",f:"Based on what we've seen, I can have the exact number by [day]. Does that work?",a:{en:"Throwing out a number without scope or approved rates.",es:"Soltar un número sin alcance ni tarifa aprobada."}},
+{o:"We had a bad experience before.",m:{en:"Fear of repeating it. Trust is the real objection.",es:"Miedo a repetirlo. La confianza es la objeción real."},s:"It sounds like your biggest concern is not going through that again. That's completely fair. What went wrong last time?",f:"Here's how we prevent exactly that: one point of contact, scheduled inspections, and a written scope. Would that address it?",a:{en:"Promising you're “not like them” without proof.",es:"Prometer que “no eres como ellos” sin prueba."}},
+{o:"Can you match our current provider?",m:{en:"Testing flexibility. Neither accept nor reject on the spot.",es:"Prueban flexibilidad. Ni aceptes ni rechaces en el momento."},s:"That's helpful to know. Let me make sure I understand exactly what's included at that rate, because scope and condition can make a real difference.",f:"If the scope is comparable, we'll look at the most appropriate structure. Can you share what's in your current agreement?",a:{en:"Promising to match before you've seen the scope.",es:"Prometer igualar antes de ver el alcance."}},
+{o:"We're not ready yet.",m:{en:"Something has to happen first. Find out what.",es:"Algo tiene que pasar primero. Averigua qué."},s:"Completely understandable. What needs to happen on your side before this becomes a priority?",f:"Would it make sense for me to check back in [month] so we can plan ahead?",a:{en:"Hanging up without a month in the CRM.",es:"Colgar sin un mes en el CRM."}},
+{o:"I'm just comparing options.",m:{en:"A good sign: they're actively looking.",es:"Buena señal: están buscando activamente."},s:"That's a smart way to approach it. What criteria matter most to you as you compare?",f:"Would it help if I laid out the scope so it's easy to compare side by side?",a:{en:"Talking badly about the other bids.",es:"Hablar mal de las otras cotizaciones."}},
+{o:"We do it in-house.",m:{en:"They have staff. Look for the gaps: busy weeks, heavy jobs, quality.",es:"Tienen personal. Busca los huecos: semanas pesadas, trabajos grandes, calidad."},s:"That makes sense. How is that working during your busiest weeks?",f:"A lot of teams keep in-house for daily work and use us for the heavy jobs. Would that be useful here?",a:{en:"Implying their staff does a bad job.",es:"Insinuar que su personal trabaja mal."}},
+{o:"Send me your price list.",m:{en:"They want to compare by number without scope.",es:"Quieren comparar por número sin alcance."},s:"Happy to. So the numbers actually make sense for you, how do you normally evaluate pricing for this, square footage, scope, or a bid range?",f:"What's included in what you're comparing today?",a:{en:"Sending a generic price list.",es:"Mandar una lista genérica de precios."}},
+{o:"Another sub bid it lower.",nk:"construction",m:{en:"Different phase, fewer passes, or no stickers and windows.",es:"Otra fase, menos pasadas, o sin stickers ni ventanas."},s:"That happens. Usually it's a different phase or fewer passes. Can we compare line by line, rough, final and touch-up, so you're comparing the same job?",f:"Does their number include window and sticker removal and the touch-up after punch list?",a:{en:"Cutting the price without cutting the scope.",es:"Bajar el precio sin bajar el alcance."}},
+{o:"Our maintenance team does turnovers.",nk:"pm",m:{en:"They have capacity for light units; heavy units and end of month are the gap.",es:"Tienen capacidad para unidades ligeras; las pesadas y el fin de mes son el hueco."},s:"That makes sense. How is that working at the end of the month when several units turn at once?",f:"A lot of managers keep in-house for light units and use us for the heavy ones. Would that help?",a:{en:"Trying to replace their team entirely.",es:"Intentar reemplazar a su equipo completo."}},
+{o:"Another company quoted me less.",nk:"residential",m:{en:"Different scope, fewer hours, or supplies not included.",es:"Otro alcance, menos horas, o sin suministros."},s:"That happens, and it's usually a different scope. What I can promise is everything on the list, an insured team, and we come back if anything's missed.",f:"Would Thursday at 9 or Saturday at 1 work better?",a:{en:"Matching the lower price.",es:"Igualar el precio más bajo."}},
+{o:"We need to go through procurement.",nk:"office",m:{en:"There's a formal process. Learn it and get in.",es:"Hay un proceso formal. Apréndelo y entra."},s:"Of course. Is that handled through a portal, or is there someone I should send our documents to?",f:"Once we submit, what does the review look like, and when should I follow up?",a:{en:"Skipping the process and pushing the contact.",es:"Saltar el proceso y presionar al contacto."}}
+];
+
+const CLOSES=[
+{n:{en:"Two options",es:"Dos opciones"},w:{en:"Always. Replace every yes or no question.",es:"Siempre. Reemplaza toda pregunta de sí o no."},y:{en:"Choosing between two options feels like control; a yes or no feels like a commitment. Both answers move you forward.",es:"Elegir entre dos opciones se siente como control; un sí o no se siente como compromiso. Ambas respuestas te hacen avanzar."},ex:["Would Tuesday or Thursday work better to get started?","Morning or evening service?","Would you like it by email today, or should we review it together tomorrow?"]},
+{n:{en:"Assumptive",es:"Asumido"},w:{en:"When they've confirmed the value and the only gap is logistics.",es:"Cuando ya confirmaron el valor y solo falta la logística."},y:{en:"You talk about the next step as the natural thing to do. It removes the pressure of a big decision.",es:"Hablas del siguiente paso como lo natural. Quita la presión de una gran decisión."},ex:["The next step is a quick review Friday. I'll bring the service agreement so we can lock the start date.","Let's get you on the schedule. Who should our team coordinate with for keys?"]},
+{n:{en:"Summary",es:"Resumen"},w:{en:"After recapping their priorities.",es:"Después de repasar sus prioridades."},y:{en:"They hear their own words connected to your solution. Saying no would mean rejecting their own list.",es:"Escuchan sus propias palabras conectadas a tu solución. Decir que no sería rechazar su propia lista."},ex:["You need spotless restrooms, someone who answers, and the same crew. That's exactly how we set this up. Shall we start on the 1st?"]},
+{n:{en:"Trial",es:"De prueba"},w:{en:"Before the final ask, to surface hidden objections.",es:"Antes de la petición final, para sacar objeciones ocultas."},y:{en:"It's safe to answer and tells you exactly what's still in the way.",es:"Es seguro de contestar y te dice exactamente qué sigue estorbando."},ex:["If the proposal reflects everything we discussed, is there anything that would keep you from moving forward?","How does this compare to what you were expecting?"]},
+{n:{en:"Real scarcity",es:"Escasez real"},w:{en:"Only when it's true: limited crew, date, season.",es:"Solo si es cierto: equipo limitado, fecha, temporada."},y:{en:"A real constraint helps them organize the decision. A fake one destroys trust when they discover it.",es:"Una restricción real les ayuda a organizar la decisión. Una falsa destruye la confianza cuando la descubren."},ex:["Our night crew for this area has one opening in October. If the 1st matters, let's hold it today.","Spring dates fill up first. I can pencil you in for the second week of April."]},
+{n:{en:"Proposal and review",es:"Propuesta y revisión"},w:{en:"Commercial jobs that need a written scope.",es:"Trabajos comerciales que necesitan alcance escrito."},y:{en:"The review call is the difference between a proposal and a quote nobody reads.",es:"La llamada de revisión es la diferencia entre una propuesta y una cotización que nadie lee."},ex:["I'll have it to you by Thursday. Would Friday at 10 or Monday at 2 work to go over it together?"]},
+{n:{en:"Future",es:"Futuro"},w:{en:"When it's truly not the moment.",es:"Cuando realmente no es el momento."},y:{en:"A no for now is a future date you haven't booked yet.",es:"Un no por ahora es una fecha futura que aún no agendas."},ex:["When does your current agreement come up for renewal? Would it be alright if I reached back out before that?","And if you know another manager dealing with the same issues, we'd love an introduction."]}
+];
+
+const AREAS=[
+{a:{en:"Entrance and lobby",es:"Entrada y lobby"},l:{en:"Glass, door mats, fingerprints, dust on ledges, floor shine",es:"Vidrio, tapetes, huellas, polvo en repisas, brillo del piso"},s:"This is the first thing your visitors see. How often would you want the glass and entry detailed?",u:{en:"Window cleaning, entry mat program",es:"Ventanas, programa de tapetes"}},
+{a:{en:"Restrooms",es:"Baños"},l:{en:"Odor, dispensers, grout, top of partitions, behind toilets",es:"Olor, dispensadores, juntas, parte alta de divisiones, detrás de inodoros"},s:"Restrooms are usually where complaints start. Who notices first when they're not right?",u:{en:"Initial deep clean, restroom sanitation program",es:"Limpieza inicial profunda, programa de baños"}},
+{a:{en:"Kitchen and break room",es:"Cocina y comedor"},l:{en:"Grease, inside microwave, fridge, sink, trash area",es:"Grasa, microondas por dentro, refri, fregadero, zona de basura"},s:"Do you want the inside of the fridge and microwave included, or kept by your team?",u:{en:"Weekly appliance detail",es:"Detalle semanal de electrodomésticos"}},
+{a:{en:"Floors",es:"Pisos"},l:{en:"Type, wear paths, wax buildup, carpet stains, grout",es:"Tipo, desgaste, acumulación de cera, manchas, juntas"},s:"When was the last time the floors were stripped and waxed, or the carpet extracted?",u:{en:"Floor care, carpet extraction",es:"Floor care, extracción de alfombra"}},
+{a:{en:"Offices and desks",es:"Oficinas y escritorios"},l:{en:"High dust, monitors, bins, desk policy, clutter",es:"Polvo alto, monitores, canastos, política de escritorios, desorden"},s:"Do you have a policy about wiping desks with items on them?",u:{en:"High dusting, quarterly detail",es:"Polvo alto, detalle trimestral"}},
+{a:{en:"Hallways and stairs",es:"Pasillos y escaleras"},l:{en:"Scuffs, corners, baseboards, handrails",es:"Marcas, esquinas, zócalos, barandales"},s:"Are there areas that get more traffic at certain times of day?",u:{en:"Day porter",es:"Day porter"}},
+{a:{en:"Janitor closet",es:"Cuarto de limpieza"},l:{en:"Space, sink, existing equipment, chemicals",es:"Espacio, fregadero, equipo existente, químicos"},s:"Can we keep our equipment here, and is there water access?",u:{en:"",es:""}},
+{a:{en:"Exterior",es:"Exterior"},l:{en:"Sidewalks, parking lot, dumpsters, high glass, gum",es:"Aceras, estacionamiento, contenedores, vidrio alto, chicle"},s:"Who takes care of the outside today?",u:{en:"Pressure washing, exterior windows",es:"Pressure washing, ventanas exteriores"}}
+];
+
+const NDEEP={
+ office:{
+  who:{en:"Office manager, facilities manager, operations manager, practice manager in clinics. In larger companies, procurement approves.",es:"Office manager, facilities manager, operations manager, practice manager en clínicas. En empresas grandes aprueba procurement."},
+  care:{en:["Consistency every night","One person to call","Not hearing complaints from staff or patients","Inspection ready (clinics)","Security and access control"],es:["Consistencia cada noche","Una persona a quien llamar","No escuchar quejas del personal o pacientes","Listo para inspecciones (clínicas)","Seguridad y control de acceso"]},
+  buy:{en:"Walkthrough, written proposal, review call, sometimes vendor registration (COI, W-9), then a service agreement. Usually 1 to 4 weeks.",es:"Walkthrough, propuesta escrita, llamada de revisión, a veces registro de vendor (COI, W-9), luego acuerdo de servicio. Normalmente 1 a 4 semanas."},
+  green:{en:["Current contract ending","Recent complaint or incident","Asks about insurance or start dates","Asks you to see other areas"],es:["Contrato actual por terminar","Queja o incidente reciente","Pregunta por seguro o fechas","Te pide ver otras áreas"]},
+  red:{en:["Can't say who decides","Only wants a price list","No problem with current provider and no date","Long contract just renewed"],es:["No sabe quién decide","Solo quiere lista de precios","Sin problema con el proveedor actual y sin fecha","Contrato largo recién renovado"]},
+  role:[["you","Thank you for taking the time today. I know it's limited, so I'll make it count. What's your role here, and how long have you been with the company?"],["them","I'm the office manager, about four years."],["you","And is it just you I'll be talking to about this, or is anyone else involved?"],["them","The owner signs off, but he'll go with what I recommend."],["you","Great. What made you start looking at other options now?"],["them","Honestly, they keep missing nights and nobody answers when I call."],["you","Nobody answers?"],["them","Last week the owner walked in Monday and the trash from Friday was still there."],["you","It sounds like you're the one taking the heat when this goes wrong."],["them","Exactly."],["you","If you could fix three things about how the office is cleaned, what would they be?"],["them","Show up every night, restrooms, and someone who picks up the phone."],["you","So: every night, restrooms, and a real point of contact, in that order. Did I get that right? Let's walk the space and I'll focus on those."]]},
+ pm:{
+  who:{en:"Community or property manager decides day to day; the regional manager approves new vendors or larger contracts. Maintenance supervisor influences turnovers.",es:"El community o property manager decide en el día a día; el regional aprueba nuevos vendors o contratos grandes. El supervisor de mantenimiento influye en los turnovers."},
+  care:{en:["Units ready on move-in day","Passing the unit inspection the first time","Fewer resident complaints","Fast response at end of month","Clean invoices per unit"],es:["Unidades listas el día del move-in","Pasar la inspección a la primera","Menos quejas de residentes","Respuesta rápida a fin de mes","Facturas claras por unidad"]},
+  buy:{en:"Vendor compliance first (NetVendor, RealPage, Avetta), then a trial unit or common areas, then volume. Win one property, then ask for the portfolio.",es:"Primero compliance de vendor (NetVendor, RealPage, Avetta), luego una unidad de prueba o áreas comunes, luego volumen. Gana una propiedad y luego pide el portafolio."},
+  green:{en:["High vacancy or lease-up","Current vendor late on turns","Asks how fast you can respond","Asks about other properties"],es:["Mucha vacancy o lease-up","Vendor actual atrasado en turnovers","Pregunta qué tan rápido respondes","Pregunta por otras propiedades"]},
+  red:{en:["Not registered in their compliance portal","Wants per-unit price before you see units","In-house team with no backlog"],es:["No estás registrado en su portal","Quiere precio por unidad sin ver unidades","Equipo interno sin atraso"]},
+  role:[["you","Thanks for meeting me. How many units are on the property, and how many turnovers do you usually have in a month?"],["them","240 units, maybe 10 to 15 turns, more in summer."],["you","And what's your make-ready window from move-out to move-in?"],["them","Three days if we're lucky. Lately it's been two."],["you","Two?"],["them","Our current vendor shows up late, then we're rushing paint and cleaning the same day."],["you","It sounds like the end of the month is where it all piles up on you."],["them","Every single month."],["you","What does your team check on the unit inspection?"],["them","Inside the oven and fridge, cabinets, baseboards, bathrooms."],["you","Here's what I'd suggest: let us take your next two turns so you can see the standard. If it passes inspection the first time, we talk about the rest. Would this week or next work better?"]]},
+ construction:{
+  who:{en:"Project manager or superintendent decides; the GC's office may handle the subcontract. On smaller jobs the owner of the GC decides.",es:"El project manager o superintendente decide; la oficina del GC puede manejar el subcontrato. En obras pequeñas decide el dueño del GC."},
+  care:{en:["Hitting the handover date","Passing the CO inspection","Not slowing other trades","Showing up when called","Knowing the phases"],es:["Cumplir la fecha de entrega","Pasar la inspección del CO","No retrasar a otros oficios","Llegar cuando los llaman","Conocer las fases"]},
+  buy:{en:"Bid or quote per phase, often with a scope walk. Insurance and W-9 required. Payment terms usually net 30 to 60. Relationships with supers bring repeat work.",es:"Cotización por fase, muchas veces con scope walk. Seguro y W-9 obligatorios. Pago normalmente a 30 o 60 días. La relación con los supers trae trabajo repetido."},
+  green:{en:["Substantial completion date set","Their usual sub let them down","Asks if you can do nights","Multiple projects coming"],es:["Fecha de substantial completion definida","Su sub de siempre les falló","Pregunta si trabajas de noche","Varios proyectos en camino"]},
+  red:{en:["Wants a price per sq ft over the phone","No date yet","Debris and dumpster unclear","Tight payment terms with no deposit"],es:["Quiere precio por sq ft por teléfono","Sin fecha todavía","Escombro y contenedor sin definir","Pago largo sin depósito"]},
+  role:[["you","Thanks for walking me through. Where are we in the project right now?"],["them","Drywall's done, flooring goes in next week, handover is mid November."],["you","So we're talking final clean and the touch-up after punch list. What's your substantial completion date?"],["them","November 14th, CO inspection the 18th."],["you","The 18th?"],["them","Yeah, and last time our cleaner showed up a day late and we almost failed."],["you","It sounds like the date matters more than anything else on this one."],["them","It's everything."],["you","Who's the superintendent I'd coordinate with, and is debris on us or is there a dumpster?"],["them","Mike's the super. Dumpster's here, debris is ours."],["you","Here's how I'd set it: final clean the 12th and 13th with two crews, touch-up the 17th after your punch list, so you have a full day of cushion before the 18th. Does that work with Mike's schedule?"]]},
+ residential:{
+  who:{en:"The homeowner, often with a spouse. If both are home, include both in the conversation.",es:"El dueño de casa, muchas veces con su pareja. Si están los dos, inclúyelos a ambos."},
+  care:{en:["Trust and safety in their home","A clear price, no surprises","Same team each time","Flexibility with dates","Details: kitchen, bathrooms, pet hair"],es:["Confianza y seguridad en su casa","Precio claro, sin sorpresas","El mismo equipo cada vez","Flexibilidad de fechas","Detalles: cocina, baños, pelo de mascota"]},
+  buy:{en:"Decides in the same visit or the next day. Recommend, price from approved rates, offer two dates, confirm by text. The written quote is documentation, not a proposal to think about.",es:"Decide en la misma visita o al día siguiente. Recomienda, cotiza desde tarifas aprobadas, ofrece dos fechas, confirma por texto. La cotización escrita es documentación, no algo para pensar."},
+  green:{en:["Guests, move or event coming","Asks about the team or insurance","Asks how soon you can come","Shows you the rooms that bother them"],es:["Visitas, mudanza o evento cerca","Pregunta por el equipo o el seguro","Pregunta qué tan pronto pueden venir","Te muestra los cuartos que le molestan"]},
+  red:{en:["Only asks for hourly rate","Comparing five quotes by price only","No date in mind"],es:["Solo pregunta tarifa por hora","Compara cinco cotizaciones solo por precio","Sin fecha en mente"]},
+  role:[["you","Thanks for having me. Tell me a bit about the house and what's going on right now."],["them","We just haven't kept up since the baby came, and my in-laws arrive in two weeks."],["you","Two weeks?"],["them","Yes, and the kitchen and the guest bath are a disaster."],["you","It sounds like you want the house to feel like yours again before they get here."],["them","Exactly."],["you","Based on what you've told me, I'd start with a deep clean to reset everything, with extra time in the kitchen and guest bath. Then biweekly keeps it there so you don't have to think about it."],["you","For your home the deep clean is [rate], everything included. We have Thursday at 9 or Saturday at 1. Which works better?"],["them","Saturday."],["you","Perfect. I'll text you the confirmation with everything in writing right now."]]}
+};
+
+const techHTML=t=>`<details><summary>${es()?t.ne:t.n}</summary><div class="in">
+ <p style="margin:0 0 8px">${L(t.what)}</p>
+ <div class="card soft" style="margin:8px 0"><div class="lab">${es()?"Por qué funciona":"Why it works"}</div>${L(t.why)}</div>
+ <div class="lab" style="margin-top:12px">${es()?"Cómo hacerlo":"How to do it"}</div><ol style="margin:0 0 6px;padding-left:20px">${L(t.how).map(x=>`<li style="margin:3px 0">${x}</li>`).join("")}</ol>
+ <div class="lab" style="margin-top:12px">${es()?"Ejemplos":"Examples"}</div>${t.ex.map(x=>say(x)).join("")}
+ <div class="rev"><b>${es()?"Evita:":"Avoid:"}</b> ${L(t.avoid)}</div></div></details>`;
+const objHTML=o=>`<details><summary>“${esc(o.o)}”</summary><div class="in">
+ <div class="rev" style="margin-bottom:8px"><b>${es()?"Qué significa en realidad:":"What it really means:"}</b> ${L(o.m)}</div>
+ ${say(o.o,"them")}${say(o.s)}<div class="lab" style="margin-top:10px">${es()?"Pregunta siguiente":"Follow-up question"}</div>${say(o.f)}
+ <div class="rev"><b>${es()?"Evita:":"Avoid:"}</b> ${L(o.a)}</div></div></details>`;
+const closeHTML=c=>`<details><summary>${L(c.n)}</summary><div class="in">
+ <div class="rev"><b>${es()?"Cuándo:":"When:"}</b> ${L(c.w)}</div>
+ <div class="card soft" style="margin:8px 0"><div class="lab">${es()?"Por qué funciona":"Why it works"}</div>${L(c.y)}</div>
+ ${c.ex.map(x=>say(x)).join("")}</div></details>`;
+const ND=()=>NDEEP[S.niche]||NDEEP.office;
+const partnerHTML=()=>ACC(PARTNER_Q.map(c=>[L(c.c),`<p class="hint" style="margin:0 0 8px">${L(c.w)}</p>${c.q.map(([q,r])=>`${say(q)}<div class="rev" style="margin-bottom:8px"><b>${L(U.reveals)}</b> ${L(r)}</div>`).join("")}`]));
+const modeName=()=>L(MODES[S.mode||"walk"].n);
+const stepName=s0=>typeof s0.name==="function"?s0.name():L(s0.name);
+const objsFor=()=>OBJ.filter(o=>!o.nk||o.nk===S.niche);
+
+/* ================= MEETING / CALL MODE ================= */
+const MODES={
+ walk:{n:{en:"Site walkthrough",es:"Walkthrough en sitio"},d:{en:"You're at the property. Person, story, then the space.",es:"Estás en la propiedad. Persona, historia, luego el espacio."}},
+ meeting:{n:{en:"In-person meeting",es:"Reunión en persona"},d:{en:"Office or coffee meeting. Priorities, experience and partnership, then book the walkthrough.",es:"Reunión en oficina o café. Prioridades, experiencia y alianza, luego agendar el walkthrough."}},
+ call:{n:{en:"Scheduled call / video",es:"Llamada o video agendado"},d:{en:"Booked conversation by phone, Zoom or Teams. Same depth, more summarizing.",es:"Conversación agendada por teléfono, Zoom o Teams. Misma profundidad, más resúmenes."}}
+};
+const isWalk=()=>(S.mode||"walk")==="walk";
+
+const AGENDA={
+ why:{en:"A scheduled conversation needs a clear frame in the first minute: how long, what you'll cover, and what happens at the end. It's called an upfront contract. It lowers the client's guard because nothing will be sprung on them, and it gives you permission to ask deep questions and to propose a next step at the end.",es:"Una conversación agendada necesita un marco claro en el primer minuto: cuánto dura, qué van a cubrir y qué pasa al final. Se llama acuerdo inicial. Baja la guardia del cliente porque nada le va a caer de sorpresa, y te da permiso para hacer preguntas profundas y proponer un siguiente paso al final."},
+ how:{en:["Thank them and confirm the time they have","Say what you'd like to cover, in three parts","Ask what they'd like to make sure you cover","Agree on what happens at the end, including that no is a fine answer"],es:["Agradece y confirma el tiempo que tienen","Di lo que te gustaría cubrir, en tres partes","Pregunta qué quieren asegurarse de cubrir","Acuerda qué pasa al final, incluso que un no está bien"]},
+ ex:["Thanks for making the time. We scheduled 30 minutes, does that still work for you?","Here's what I was hoping to cover: your experience with cleaning so far, what matters most to you, and what a great partner would look like for your team. Then, if it makes sense, we can talk about next steps.","Is there anything you want to make sure we cover today?","And if by the end it doesn't feel like a fit, that's completely fine, just tell me. Fair enough?"]
+};
+
+const PARTNER_Q=[
+ {c:{en:"Their history with cleaning",es:"Su historia con la limpieza"},w:{en:"Past providers tell you what they will tolerate and what will make them leave. Never criticize the old provider; let them tell it.",es:"Los proveedores anteriores te dicen qué toleran y qué los hace irse. Nunca critiques al proveedor anterior; deja que ellos lo cuenten."},
+  q:[["Tell me about your experience with cleaning companies so far.",{en:"The full story, the pattern of what has gone wrong",es:"La historia completa, el patrón de lo que ha fallado"}],["How many providers have you worked with over the last few years?",{en:"Loyalty or constant switching; how hard it'll be to keep them",es:"Lealtad o cambio constante; qué tan difícil será retenerlos"}],["What did the best one do differently?",{en:"Exactly what to repeat; this is gold",es:"Exactamente qué repetir; esto es oro"}],["And what made you move on from the last one?",{en:"Their deal breaker. Write it word for word",es:"Lo que no perdonan. Escríbelo palabra por palabra"}],["Was there a moment when you realized it wasn't going to work?",{en:"The emotional trigger and the timeline",es:"El detonante emocional y la línea de tiempo"}]]},
+ {c:{en:"What a partner looks like",es:"Cómo se ve un socio"},w:{en:"This is the heart of a partnership meeting. You're asking them to describe the provider they'd never replace, and they're writing your proposal for you.",es:"Este es el corazón de una reunión de alianza. Les pides que describan al proveedor que nunca reemplazarían, y te están escribiendo la propuesta."},
+  q:[["If you found a cleaning partner you'd keep for the next ten years, what would they be doing that others haven't?",{en:"Their definition of a lifetime partner",es:"Su definición de un socio de por vida"}],["What would a great partnership look like for you, day to day?",{en:"Communication, visibility, standard",es:"Comunicación, visibilidad, estándar"}],["How would you know, three months in, that you made the right choice?",{en:"Their success criteria; put these in the proposal",es:"Sus criterios de éxito; ponlos en la propuesta"}],["What would make you recommend us to another manager?",{en:"What earns a referral",es:"Lo que gana un referido"}],["What's the one thing a provider could do that would make you trust them right away?",{en:"The fastest path to trust",es:"El camino más rápido a la confianza"}]]},
+ {c:{en:"Communication and trust",es:"Comunicación y confianza"},w:{en:"Most cleaning relationships end over communication, not over the cleaning. Learn exactly how they want to be kept in the loop.",es:"La mayoría de las relaciones de limpieza terminan por comunicación, no por la limpieza. Aprende exactamente cómo quieren estar informados."},
+  q:[["When something isn't right, how would you like us to find out and fix it?",{en:"Their ideal escalation path",es:"Su forma ideal de escalar"}],["How do you prefer to communicate: text, email, a quick call?",{en:"Channel and pace",es:"Canal y ritmo"}],["How often would you want to hear from us when everything is going well?",{en:"Reporting expectation",es:"Expectativa de reportes"}],["Would photo reports or a monthly check-in be useful, or just more noise?",{en:"What visibility they value",es:"Qué visibilidad valoran"}]]},
+ {c:{en:"Priorities and standards",es:"Prioridades y estándar"},w:{en:"Get the order of what matters. The first two answers are what closes the sale.",es:"Obtén el orden de lo que importa. Las dos primeras respuestas son las que cierran la venta."},
+  q:[["If you could fix three things about how your space is cleaned today, what would they be?",{en:"Prioritized pain",es:"Dolor priorizado"}],["What does clean mean for your team? What do people notice first?",{en:"Their real standard, often different from yours",es:"Su estándar real, muchas veces distinto al tuyo"}],["Who notices first when it isn't right, and who do they tell?",{en:"Who feels the pain and the chain of complaints",es:"Quién siente el dolor y la cadena de quejas"}],["What would you never want to hear about again?",{en:"The problem they're paying to remove",es:"El problema que pagan por quitarse"}]]},
+ {c:{en:"Decision and timing",es:"Decisión y tiempos"},w:{en:"Close the meeting knowing who, how and when. Ask it as a story, not as a checklist.",es:"Termina la reunión sabiendo quién, cómo y cuándo. Pregúntalo como historia, no como lista."},
+  q:[["Walk me through how a decision like this usually happens on your side.",{en:"Decision makers, approvals, steps",es:"Decisores, aprobaciones, pasos"}],["When does your current agreement come up, and is there anything driving a date?",{en:"Real deadline",es:"Fecha límite real"}],["What would make this an easy decision for you?",{en:"What's still missing",es:"Lo que aún falta"}]]}
+];
+
+const SCOPE_TALK={en:"Without seeing the property you can still capture most of the scope. Ask conversationally, confirm with photos or a floor plan if they have them, and make the walkthrough the next step so the price is accurate.",es:"Sin ver la propiedad puedes capturar casi todo el alcance. Pregunta de forma conversacional, confirma con fotos o un plano si los tienen, y deja el walkthrough como siguiente paso para que el precio sea exacto."};
+const SCOPE_Q=["Roughly how large is the space, and how many floors?","How many restrooms and break rooms are we talking about?","What kind of floors do you have, and what condition are they in?","How many days a week are you thinking, and at what time?","Who provides paper and soap today?","How would our team get in: keys, codes, an alarm?","Would you be able to send a few photos or a floor plan after this?","When would be a good time for me to come see it in person?"];
+
+const CALL_TIPS={en:["Confirm the time at the start and keep to it","Stand up or sit straight; energy carries in your voice","Without body language, summarize more often: every few minutes","Use their name a bit more than in person","Ask permission before taking notes or recording","On video, look at the camera when they talk about their problem","End with the recap and the next step out loud, then email it within the hour"],es:["Confirma el tiempo al inicio y respétalo","Párate o siéntate derecho; la energía se nota en la voz","Sin lenguaje corporal, resume más seguido: cada pocos minutos","Usa su nombre un poco más que en persona","Pide permiso antes de tomar notas o grabar","En video, mira a la cámara cuando hablen de su problema","Termina con el resumen y el siguiente paso en voz alta, y envíalo por email dentro de una hora"]};
+const MEET_TIPS={en:["Arrive five minutes early, not fifteen; it's their office","Bring a notepad, not a laptop between you","Let them pick where to sit; sit at an angle, not across","Don't open a brochure until they ask what you do","If others join, ask each person what they need from cleaning","End by booking the walkthrough on their calendar before you stand up"],es:["Llega cinco minutos antes, no quince; es su oficina","Lleva libreta, no una laptop entre ustedes","Deja que ellos elijan dónde sentarse; siéntate en ángulo, no de frente","No abras un folleto hasta que pregunten qué haces","Si se suma alguien, pregunta a cada uno qué necesita de la limpieza","Termina agendando el walkthrough en su calendario antes de levantarte"]};
+
+const MEET_ROLE=[["you","Thanks for making the time. We scheduled 30 minutes, does that still work?"],["them","Yes, that's fine."],["you","Great. I'd love to hear about your experience with cleaning so far, what matters most to you, and what a great partner would look like. Then, if it makes sense, we can talk next steps. Anything you want to make sure we cover?"],["them","Mostly I want to know you'll actually show up."],["you","Show up?"],["them","We've had three companies in two years. All great the first month, then it slides."],["you","It sounds like you're tired of starting over every few months."],["them","Exactly. I don't have time to train a new crew every time."],["you","What did the best of those three do differently?"],["them","The first one had a supervisor who texted me every Friday. I always knew where things stood."],["you","If you found a partner you'd keep for the next ten years, what would they be doing?"],["them","Same crew, someone who answers, and I never have to ask twice."],["you","So: consistency, a real point of contact, and follow-through, in that order. Did I get that right?"],["them","That's it."],["you","Here's what I'd suggest: let me walk the space so the proposal fits your building, and I'll show you exactly how we keep the same crew and the Friday update. Would Tuesday morning or Thursday afternoon work better?"]];
+
+/* ================= ESTIMATOR ================= */
+const DEF_RATES={rough:[0.10,0.25],final:[0.20,0.50],touch:[0.05,0.15],unit:[150,450]};
+const rates=()=>Object.assign({},DEF_RATES,S.rates||{});
+function estHTML(){
+ const r=rates();const n=S.niche;
+ if(n==="construction"){const sq=+g("e_sq")||0;const ph=S.e_ph||["final"];let lo=0,hi=0;ph.forEach(p=>{lo+=sq*r[p][0];hi+=sq*r[p][1]});
+  const nm={rough:"Rough",final:"Final",touch:"Touch-up"};
+  return `<div class="card soft"><div class="lab">${es()?"Estimado rápido de referencia":"Quick reference estimate"}</div>
+  <div class="field"><label>${es()?"Pies cuadrados":"Square feet"}</label><input type="number" min="0" data-s="e_sq" value="${esc(g("e_sq"))}" placeholder="12500"></div>
+  <div class="chips" id="phs">${["rough","final","touch"].map(p=>`<button class="chip ${ph.includes(p)?"on":""}" data-ph="${p}">${nm[p]}</button>`).join("")}</div>
+  <div class="est" style="margin-top:12px">${["rough","final","touch"].map(p=>`<div><div class="lab">${nm[p]} $/sq ft</div><div style="display:flex;gap:4px"><input type="number" step="0.01" data-rate="${p}:0" value="${r[p][0]}"><input type="number" step="0.01" data-rate="${p}:1" value="${r[p][1]}"></div></div>`).join("")}</div>
+  <div style="margin-top:14px"><div class="lab">${es()?"Rango de referencia":"Reference range"}</div><div class="big" id="estOut">${sq?`$${Math.round(lo).toLocaleString()} – $${Math.round(hi).toLocaleString()}`:"—"}</div></div>
+  <p class="hint">${es()?"Solo referencia de mercado. Ajusta las tarifas a tu zona. Tu precio final sale de tus costos, tu tarifa aprobada y la condición real.":"Market reference only. Adjust the rates to your area. Your final price comes from your costs, your approved rates, and the real condition."}</p></div>`}
+ if(n==="pm"){const u=+g("e_units")||0;
+  return `<div class="card soft"><div class="lab">${es()?"Estimado rápido de turnovers":"Quick turnover estimate"}</div>
+  <div class="est"><div class="field"><label>${es()?"Turnovers al mes":"Turnovers per month"}</label><input type="number" min="0" data-s="e_units" value="${esc(g("e_units"))}" placeholder="12"></div>
+  <div class="field"><label>${es()?"Por unidad, mínimo":"Per unit, low"}</label><input type="number" data-rate="unit:0" value="${r.unit[0]}"></div>
+  <div class="field"><label>${es()?"Por unidad, máximo":"Per unit, high"}</label><input type="number" data-rate="unit:1" value="${r.unit[1]}"></div></div>
+  <div><div class="lab">${es()?"Ingreso mensual de referencia":"Monthly reference revenue"}</div><div class="big" id="estOut">${u?`$${(u*r.unit[0]).toLocaleString()} – $${(u*r.unit[1]).toLocaleString()}`:"—"}</div></div>
+  <p class="hint">${es()?"Depende de tamaño de unidad, condición, mascotas y alfombra. Ajusta a tu zona.":"Depends on unit size, condition, pets and carpet. Adjust to your area."}</p></div>`}
+ return "";
+}
+
+/* ================= STEPS ================= */
+const STEPS=[
+{id:"start",name:{en:"Start",es:"Inicio"},render:()=>`
+ <h1>${es()?"¿Qué tipo de reunión es?":"What kind of meeting is this?"}</h1>
+ <div class="niches three">${Object.entries(MODES).map(([k,v])=>`<button class="niche ${(S.mode||"")===k?"on":""}" data-mode="${k}"><b>${L(v.n)}</b><span>${L(v.d)}</span></button>`).join("")}</div>
+ <h1 style="margin-top:22px">${es()?"¿Qué tipo de cliente es?":"What kind of client is it?"}</h1>
+ <p class="lead">${es()?"La guía adapta vocabulario, preguntas, datos para cotizar y servicios según el tipo de cliente.":"The guide adapts vocabulary, questions, quote details and services to the type of client."}</p>
+ <div class="niches">${Object.entries(NICHES).map(([k,v])=>`<button class="niche ${S.niche===k?"on":""}" data-niche="${k}"><b>${L(v.name)}</b><span>${L(v.tag)}</span></button>`).join("")}</div>
+ <div class="card dark"><div class="lab">${es()?"La visita en una frase":"The visit in one line"}</div><b>${es()?"Persona, historia, espacio, dos fechas. Tú hablas 20%.":"Person, story, space, two dates. You talk 20%."}</b>
+ <p class="hint" style="margin:8px 0 0">${es()?"El cliente casi siempre tiene 15 minutos. Primero conoces a la persona, después su historia, al final recorres. Así se siente como una conversación de negocios, no como una inspección.":"The client usually has about 15 minutes. Meet the person first, then their story, and walk the space last. It feels like a business conversation, not an inspection."}</p></div>
+ ${TABLE([es()?"Etapa":"Stage",es()?"Tiempo":"Time",es()?"Objetivo":"Goal"],[
+  [es()?"Conectar":"Connect","1–2 min",es()?"Confianza y contexto":"Trust and context"],
+  [es()?"Preguntar":"Ask","6–7 min",es()?"Motivo real, prioridades, urgencia":"Real reason, priorities, urgency"],
+  [es()?"Recorrer":"Walk","4–5 min",es()?"Alcance real para cotizar":"Real scope to quote"],
+  [es()?"Objeciones":"Objections","2 min",es()?"Resolver sin discutir":"Resolve without arguing"],
+  [es()?"Cerrar":"Close","1–2 min",es()?"Venta o dos fechas":"The sale, or two dates"]])}`},
+
+{id:"prep",name:{en:"Prepare",es:"Preparar"},render:()=>`
+ <h1>${es()?"Antes de la visita":"Before the visit"}</h1>
+ <p class="lead">${es()?"Treinta minutos de investigación te ponen por encima de cualquier otro proveedor que visite el mismo edificio.":"Thirty minutes of research puts you ahead of every other vendor walking the same building."}</p>
+ <h2>${es()?"Qué revisar en su sitio web":"What to check on their website"}</h2>
+ ${TABLE([es()?"Dónde":"Where",es()?"Qué buscar":"What to look for",es()?"Para qué":"Why"],[
+  ["About / Home",es()?"A qué se dedican, desde cuándo, tono de la marca":"What they do, since when, brand tone",es()?"Hablar su idioma":"Speak their language"],
+  ["Locations",es()?"Cuántas ubicaciones o propiedades":"How many locations or properties",es()?"Oportunidad de expansión":"Expansion opportunity"],
+  ["Vendors / Procurement",es()?"Portal, requisitos de seguro, RFPs abiertos":"Portal, insurance requirements, open RFPs",es()?"Llegar sabiendo el proceso":"Arrive knowing the process"],
+  ["Careers / Team",es()?"Quién maneja operaciones o facilities":"Who runs operations or facilities",es()?"Identificar al decisor":"Find the decision maker"],
+  ["News / Social",es()?"Aperturas, remodelaciones, eventos":"Openings, remodels, events",es()?"Fecha límite real":"Real deadline"],
+  ["Google reviews",es()?"Quejas de limpieza, baños, olores":"Complaints about cleaning, restrooms, odors",es()?"Conocer el dolor antes":"Know the pain in advance"],
+  [es()?"Fotos":"Photos",es()?"Pisos, vidrio, áreas comunes, tamaño":"Floors, glass, common areas, size",es()?"Preparar preguntas de alcance":"Prepare scope questions"]])}
+ <h2>${es()?"Lo que debes saber antes de salir":"What you must know before you leave"}</h2>
+ ${CK("prep",es()?["Por qué llamaron y qué pidieron","Quién decide y quién más participa","Proveedor actual y cuánto tiempo lleva","Fecha de inicio que mencionaron","Si tienen proceso o portal de vendors","Tu tarifa aprobada para este tipo de propiedad","Confirmé la visita por texto el día anterior"]:["Why they reached out and what they asked for","Who decides and who else is involved","Current provider and how long they've had them","Start date they mentioned","Whether they have a vendor process or portal","Your approved pricing for this property type","Confirmed the visit by text the day before"])}
+ ${S.mode==="call"?`<h2>${es()?"Para una llamada o video":"For a call or video"}</h2><div class="card soft"><ul class="clean">${L(CALL_TIPS).map(x=>`<li>${x}</li>`).join("")}</ul></div>`:""}
+ ${S.mode==="meeting"?`<h2>${es()?"Para una reunión en persona":"For an in-person meeting"}</h2><div class="card soft"><ul class="clean">${L(MEET_TIPS).map(x=>`<li>${x}</li>`).join("")}</ul></div>`:""}
+ ${isWalk()?`<h2>${es()?"Llega 15 minutos antes":"Arrive 15 minutes early"}</h2>`:""}
+ ${!isWalk()?"":CK("early",es()?["Mira el exterior: estacionamiento, aceras, vidrio de entrada, dumpsters","Entra como visitante: tapetes, piso del lobby, huellas, polvo en repisas","Usa el baño: olor, dispensadores, esquinas, parte alta de divisiones","Mira hacia arriba: rejillas, lámparas, marcos de ventana","Forma una hipótesis: creo que el problema real es…"]:["Look at the outside: parking lot, sidewalks, entrance glass, dumpsters","Walk in as a visitor: door mats, lobby floor, fingerprints, dust on ledges","Use the restroom: odor, dispensers, corners, top of partitions","Look up: vents, light fixtures, window sills","Form a hypothesis: I think the real problem is…"])}
+ <h2>${es()?"Conoce el nicho":"Know the niche"}: ${L(N().name)}</h2>
+ ${TABLE([es()?"Término":"Term",es()?"Qué significa":"What it means"],N().know.map(([k,v])=>[k,L(v)]))}
+ <h2>${es()?"Cómo compra este cliente":"How this client buys"}</h2>
+ <div class="card"><div class="lab">${es()?"Quién decide":"Who decides"}</div>${L(ND().who)}</div>
+ <div class="card"><div class="lab">${es()?"Proceso de compra":"Buying process"}</div>${L(ND().buy)}</div>
+ <div class="grid2"><div class="card soft"><div class="lab">${es()?"Lo que más le importa":"What they care about"}</div><ul class="clean">${L(ND().care).map(x=>`<li>${x}</li>`).join("")}</ul></div>
+ <div class="card soft"><div class="lab">${es()?"Señales verdes":"Green flags"}</div><ul class="clean">${L(ND().green).map(x=>`<li>${x}</li>`).join("")}</ul><div class="lab" style="margin-top:10px">${es()?"Señales rojas":"Red flags"}</div><ul class="clean">${L(ND().red).map(x=>`<li>${x}</li>`).join("")}</ul></div></div>
+ <h2>${es()?"Texto de confirmación":"Confirmation text"}</h2>
+ ${say("Hi [Name], this is [Your Name] with [Company]. Confirming our walkthrough tomorrow at [time] at [address]. Will you be walking me through, or should I ask for someone else at the front desk? See you then.")}`},
+
+{id:"practice",name:{en:"Practice",es:"Práctica"},render:()=>`
+ <h1>${es()?"Practica la conversación":"Practice the conversation"}</h1>
+ <p class="lead">${es()?"Así suena un walkthrough bien hecho con este tipo de cliente. Léelo en voz alta con un compañero antes de la visita: uno hace de cliente, el otro de vendedor. Fíjate dónde se usa cada técnica.":"This is how a good walkthrough sounds with this type of client. Read it out loud with a teammate before the visit: one plays the client, the other the rep. Notice where each technique shows up."}</p>
+ <div class="card soft"><div class="lab">${L(N().name)} · ${modeName()}</div>${(isWalk()?ND().role:MEET_ROLE).map(([w,t])=>say(t,w)).join("")}</div>
+ <h2>${es()?"Qué técnicas aparecieron":"Techniques you just saw"}</h2>
+ <ul class="clean"><li><b>${es()?"Pregunta abierta":"Open question"}</b>: ${es()?"“What made you start looking…”, invita a contar la historia.":"“What made you start looking…”, invites the story."}</li><li><b>Mirroring</b>: ${es()?"repetir “Nobody answers?” o “Two?” para que expliquen más.":"repeating “Nobody answers?” or “Two?” so they explain more."}</li><li><b>Labeling</b>: ${es()?"“It sounds like…” nombra lo que sienten.":"“It sounds like…” names what they feel."}</li><li><b>${es()?"Resumen":"Summary"}</b>: ${es()?"sus prioridades en su orden, con sus palabras.":"their priorities, in their order, in their words."}</li><li><b>${es()?"Cierre de dos opciones":"Two-option close"}</b>: ${es()?"nunca termina con una pregunta de sí o no.":"it never ends on a yes or no question."}</li></ul>
+ <h2>${es()?"Ejercicios rápidos":"Quick drills"}</h2>
+ ${ACC([[es()?"Convierte cerradas en abiertas":"Turn closed into open",`<p>${es()?"Practica transformar estas preguntas:":"Practice turning these around:"}</p>${say("Are you happy with your current company?","them")}${say("How has the current service been working for you?")}${say("Do you have a budget?","them")}${say("How do you normally price this today, and what's included?")}${say("Is next week OK?","them")}${say("Would Tuesday or Thursday work better?")}`],
+ [es()?"Responde sin bajar el precio":"Answer without dropping the price",`${say("That's more than we pay now.","them")}${say("I understand. What's included in what you pay now? If we line up the scope, we can see where the difference is, and if the budget is fixed, we can adjust frequency instead of quality.")}`],
+ [es()?"Recupera una visita fría":"Recover a cold visit",`${say("I only have five minutes.","them")}${say("Then let's make them count. What made you start looking, and which two areas matter most? We'll walk those, and I'll have the proposal to you by Thursday.")}`]])}`},
+
+{id:"connect",name:{en:"Connect",es:"Conectar"},render:()=>`
+ <h1>${es()?"Los primeros dos minutos deciden la visita":"The first two minutes decide the visit"}</h1>
+ <p class="lead">${es()?"La gente le compra a quien le tiene confianza. Antes de cualquier pregunta sobre limpieza, conecta.":"People buy from people they trust. Before any question about cleaning, connect."}</p>
+ <div class="card dark" id="tbox"><div class="lab">${es()?"Cronómetro":"Timer"}</div>${es()?"Inícialo al entrar. Meta: 15 a 17 minutos. ":"Start it when you walk in. Target: 15 to 17 minutes. "}</div>
+ ${TABLE([es()?"Movimiento":"Move",es()?"Cómo":"How"],es()?[["Nota algo real","El edificio, un letrero, un premio, lo ocupado que está. Una observación genuina, nunca halagos"],["Usa su nombre","Una vez al saludar, otra al cerrar"],["Iguala su ritmo","Directo: ve al punto. Conversador: deja respirar la charla un minuto"],["Agradece el tiempo","Dilo en serio: sus 15 minutos son toda la reunión"],["Explica por qué preguntas","Para que se sienta como asesoría, no inspección"]]:[["Notice something real","The building, a sign, an award, how busy it is. One genuine observation, never flattery"],["Use their name","Once when you meet, once when you close"],["Match their pace","Direct: get to the point. Warm: let the small talk breathe for a minute"],["Thank the time","Mean it: their 15 minutes are the whole meeting"],["Explain why you'll ask","So it feels like a consultation, not an inspection"]])}
+ ${!isWalk()?`<h2>${es()?"Abre con un acuerdo inicial":"Open with an upfront agenda"}</h2><div class="card soft"><div class="lab">${es()?"Por qué funciona":"Why it works"}</div>${L(AGENDA.why)}</div><ol style="padding-left:20px">${L(AGENDA.how).map(x=>`<li style="margin:3px 0">${x}</li>`).join("")}</ol>${AGENDA.ex.map(x=>say(x)).join("")}`:""}
+ <h2>${es()?"Di esto":"Say this"}</h2>
+ ${say("Hi [Name], thank you for taking the time today. I know it's limited, so I'll make it count.")}
+ ${say("This lobby is beautiful. How long have you been in this building?")}
+ ${say("I'm with [Company]. Before we walk the facility, I'd like a few minutes to understand your business and what's most important to you. Every property runs differently, so rather than a standard presentation, I'd rather learn your goals. Then, as we walk, we focus on what matters to you.")}
+ <h2>${es()?"Conoce a la persona":"Get to know the person"}</h2>
+ ${Q("Question 1","So, what's your role here, and how long have you been with the company?",es()?"Autoridad y antigüedad sin preguntar si decide.":"Authority and tenure without asking if they decide.",es()?"“I make that call” = autoridad alta · “I'd have to run it by…” = compartida.":"“I make that call” = high authority · “I'd have to run it by…” = shared.")}
+ ${Q("Question 2","Before we dive in, is it just you I'll be talking to about this, or is there anyone else who should be part of the conversation?",es()?"Otros decisores sin sonar a interrogatorio.":"Other decision makers without sounding like an interrogation.","")}
+ ${NOTE("n1",es()?"Nota 1 de 5":"Note 1 of 5",es()?"Información del cliente":"Client info",es()?"Dana Smith, ops manager 6 años, decide con el dueño Mike. Directa, ocupada. Referida por Riverside PM.":"Dana Smith, ops manager 6 yrs, decides with owner Mike. Direct, busy. Referral from Riverside PM.")}`},
+
+{id:"ask",name:{en:"Ask",es:"Preguntar"},render:()=>`
+ <h1>${es()?"Deja que cuenten la historia":"Let them tell the story"}</h1>
+ <p class="lead">${es()?"Abiertas primero. Profundiza en lo que dicen, repítelo con tus palabras, y usa preguntas cerradas solo para llenar lo que falta.":"Open questions first. Dig into what they say, repeat it back, and use closed questions only to fill what's missing."}</p>
+ <div class="grid2"><div class="card soft"><div class="lab">${es()?"Evita (cerradas, una tras otra)":"Avoid (closed, one after another)"}</div><ul class="clean"><li>What's your budget?</li><li>Who makes the final decision?</li><li>When do you want to start?</li><li>Are you talking to other companies?</li></ul></div>
+ <div class="card"><div class="lab">${es()?"Usa (una abierta que cubre todo)":"Use (one open question that covers it all)"}</div>Walk me through how a decision like this usually happens here, who's involved, and what's the timeline?<p class="hint" style="margin:8px 0 0">${es()?"Una respuesta te da decisor, presupuesto, fecha y urgencia.":"One answer gives you decision maker, budget, date and urgency."}</p></div></div>
+ ${Q("Question 3 · why now","What made you decide to start looking at other options now?",es()?"El motivo real, la frustración y una fecha límite escondida.":"The real reason, the frustration, and a hidden deadline.",es()?"Suele ser la respuesta más larga y honesta. No interrumpas.":"Usually the longest, most honest answer. Don't interrupt.")}
+ <details><summary>${es()?"Profundiza un nivel":"Go one level deeper"}</summary><div class="in">${say("How often has that been happening?")}${say("How has that affected your team, complaints, extra work, anything like that?")}${say("What would it mean for you if that were solved?")}</div></details>
+ ${NOTE("n2",es()?"Nota 2 de 5":"Note 2 of 5",es()?"Por qué buscan / qué pasó con el proveedor anterior":"Why they're looking / what happened with the previous provider",es()?"El proveedor falta 1 o 2 noches por semana hace 3 meses, no contesta. Mes a mes. Dos quejas de pacientes por los baños.":"Provider missing 1 to 2 nights a week for 3 months, no answer when they call. Month to month. Two patient complaints about restrooms.")}
+ ${Q("Question 4 · magic wand","If you could fix three things about how your space is cleaned today, what would they be?",es()?"Una lista priorizada.":"A prioritized list.",es()?"Las dos primeras cierran la venta. El orden importa.":"The first two close the sale. The order matters.")}
+ ${Q("Question 5 · partnership","What would a great partnership with a cleaning company look like for you, day to day?",es()?"Comunicación, reportes y el estándar real.":"Communication, reporting, and the real standard.",es()?"“Reportes”, “fotos”, “un contacto”: eso va en la propuesta.":"“Reports”, “photos”, “one contact”: that goes in the proposal.")}
+ ${Q("Question 6 · decision","Walk me through how a decision like this usually happens here.",es()?"Decisores, presupuesto, cronograma.":"Decision makers, budget, timeline.",es()?"Fechas dichas de pasada suelen ser el plazo real.":"Dates mentioned in passing are usually the real deadline.")}
+ ${Q("Question 7 · anything else","Anything else going on, upcoming events, inspections, or other locations?",es()?"Expansión y servicios adicionales.":"Expansion and extra services.","")}
+ <h2>${es()?"Preguntas del nicho":"Niche questions"}: ${L(N().name)}</h2>
+ ${N().ask.map(a=>say(a)).join("")}
+ <h2>${es()?"Experiencia y alianza":"Experience and partnership"}</h2>
+ <div class="card dark"><div class="lab">${es()?"La pregunta que define la relación":"The question that defines the relationship"}</div>If you found a cleaning partner you'd keep for the next ten years, what would they be doing that others haven't?<p class="hint" style="margin:8px 0 0">${es()?"Lo que respondan es tu propuesta. Escríbelo con sus palabras y repítelo al cerrar.":"Whatever they answer is your proposal. Write it in their words and repeat it when you close."}</p></div>
+ ${partnerHTML()}
+ <h2>${es()?"Banco de preguntas por categoría":"Question bank by category"}</h2>
+ ${ACC(QBANK.map(c=>[L(c.c),`<p class="hint" style="margin:0 0 6px">${L(c.w)}</p>${c.q.map(x=>say(x)).join("")}`]))}
+ <h2>${es()?"Técnicas para que hablen más":"Techniques to get them talking"}</h2>
+ ${[0,2,5,6,7].map(i=>techHTML(TECH[i])).join("")}
+ <h2>${es()?"Escucha activa":"Active listening"}</h2>
+ <div class="card soft"><ul class="clean"><li><b>${es()?"Refleja":"Reflect"}:</b> “It sounds like consistency is the real issue here.”</li><li><b>${es()?"Resume":"Summarize"}:</b> “So: restrooms, response time, and the same crew, in that order. Did I get that right?”</li><li><b>${es()?"Aclara":"Clarify"}:</b> “When you say inconsistent, what does a bad week look like?”</li><li><b>${es()?"Silencio":"Silence"}:</b> ${es()?"pregunta y cuenta hasta cuatro.":"ask, then count to four."}</li></ul></div>
+ <h2>${es()?"Si sale el precio":"If price comes up"}</h2>
+ ${say("I'd rather give you an accurate number than a guess. How do you normally price this today, and what's included in that?")}
+ ${NOTE("n3",es()?"Nota 3 de 5":"Note 3 of 5",es()?"Prioridades principales (en su orden)":"Main priorities (in their order)",es()?"1. Baños impecables cada noche · 2. Que alguien conteste · 3. El mismo equipo. Quiere reporte semanal con fotos. Decide antes del 1 de oct.":"1. Spotless restrooms every night · 2. Someone who answers · 3. Same crew. Wants a weekly photo report. Decision by Oct 1.")}`},
+
+{id:"walk",name:()=>isWalk()?(es()?"Recorrer":"Walk"):(es()?"Alcance":"Scope"),render:()=>!isWalk()?`<h1>${es()?"Captura el alcance conversando":"Capture the scope by talking"}</h1><p class="lead">${L(SCOPE_TALK)}</p>${SCOPE_Q.map(x=>say(x)).join("")}${estHTML()}${NOTE("n4",es()?"Nota 4 de 5":"Note 4 of 5",es()?"Detalles del servicio que quieren":"Details of the service they want",L(N().quote))}<div class="card dark"><div class="lab">${es()?"Siguiente paso natural":"Natural next step"}</div>${es()?"Agenda el walkthrough antes de terminar. Sin verlo, cualquier precio es una suposición.":"Book the walkthrough before you finish. Without seeing it, any price is a guess."}</div>${say("Based on everything you've shared, the best next step is for me to see the space so the proposal fits it exactly. Would Tuesday morning or Thursday afternoon work better?")}`:`
+ <h1>${es()?"Ahora recorre, ya sabes qué buscar":"Now walk, you know what to look for"}</h1>
+ <p class="lead">${es()?"Sobre todo observación: mide, revisa, fotografía. Todo lo que necesita la cotización va en una nota.":"Mostly observation: measure, check, photograph. Everything the quote needs goes in one note."}</p>
+ ${say("Which areas get the most traffic, or need the most attention?")}
+ ${say("Anything back here I should know about, chemicals, secure areas, or equipment we need to be careful around?")}
+ <h2>${es()?"Qué capturar para cotizar":"What to capture for the quote"}</h2>
+ ${TABLE([es()?"Dato":"Detail",es()?"Mira esto":"Look at"],es()?[["Tamaño","Sq ft, pisos, baños, cocinas, oficinas vs espacio abierto"],["Pisos","Tipo y condición: VCT, alfombra, cerámica, concreto, madera"],["Frecuencia","Días por semana, horario, fecha de inicio"],["Acceso","Llaves, código, alarma, contacto en sitio"],["Suministros","Quién pone papel, jabón, bolsas; bodega"],["Condición","1 a 5: olor, grasa, polvo alto, esquinas, zócalos"],["Riesgos","Químicos, servidores, áreas restringidas"],["Fotos","Entrada, baño, cocina, áreas prioritarias"]]:[["Size","Sq ft, floors, restrooms, kitchens, offices vs open space"],["Floors","Type and condition: VCT, carpet, tile, concrete, wood"],["Frequency","Days per week, service window, start date"],["Access","Keys, code, alarm, on-site contact"],["Supplies","Who provides paper, soap, liners; storage"],["Condition","1 to 5: odor, grease, high dust, corners, baseboards"],["Risks","Chemicals, server rooms, restricted areas"],["Photos","Entrance, restroom, kitchen, priority areas"]])}
+ <h2>${es()?"Área por área":"Area by area"}</h2>
+ ${ACC(AREAS.map(x=>[L(x.a),`<div class="rev"><b>${es()?"Mira:":"Look at:"}</b> ${L(x.l)}</div>${say(x.s)}${L(x.u)?`<div class="rev"><b>${es()?"Upsell legítimo:":"Legitimate upsell:"}</b> ${L(x.u)}</div>`:""}`]))}
+ ${estHTML()}
+ ${NOTE("n4",es()?"Nota 4 de 5":"Note 4 of 5",es()?"Detalles del servicio que quieren":"Details of the service they want",L(N().quote))}
+ <div class="card soft"><div class="lab">${es()?"Durante el recorrido":"While walking"}</div>${es()?"Camina a su ritmo. Cuando señalen un problema, refléjalo: “So this is one of the areas that's been frustrating.” Nunca critiques al proveedor actual; las fotos hablan solas. No prometas nada que operaciones no haya aprobado.":"Walk at their pace. When they point at a problem, reflect it: “So this is one of the areas that's been frustrating.” Never criticize the current provider; the photos speak. Promise nothing operations hasn't approved."}</div>`},
+
+{id:"objections",name:{en:"Objections",es:"Objeciones"},render:()=>`
+ <h1>${es()?"Cómo responder sin discutir":"How to respond without arguing"}</h1>
+ <p class="lead">${es()?"Una objeción es una petición de más información. Escucha, entiende con una pregunta, responde con calma, confirma que quedó resuelta y avanza.":"An objection is a request for more information. Listen, understand with a question, respond calmly, confirm it's resolved, and move forward."}</p>
+ <div class="card dark"><div class="lab">${es()?"La secuencia":"The sequence"}</div>${es()?"Escucha sin interrumpir · Entiende con una pregunta (“Can you tell me a little more about that?”) · Responde · Confirma (“Does that answer your question?”) · Avanza con dos opciones":"Listen without interrupting · Understand with a question (“Can you tell me a little more about that?”) · Respond · Confirm (“Does that answer your question?”) · Move forward with two options"}</div>
+ <h2>${es()?"Técnicas avanzadas":"Advanced techniques"}</h2>
+ ${[3,1,4,8].map(i=>techHTML(TECH[i])).join("")}
+ <h2>${es()?"Objeciones":"Objections"} (${objsFor().length})</h2>
+ ${objsFor().map(objHTML).join("")}
+ <div class="card soft"><div class="lab">${es()?"Nunca":"Never"}</div>${es()?"Discutir · criticar al proveedor actual · bajar la tarifa para resolverla (reduce el alcance) · asumir que desapareció. Pregunta: “Does that answer your question?”":"Argue · criticize the current provider · drop the rate to fix it (reduce the scope instead) · assume it went away. Ask: “Does that answer your question?”"}</div>`},
+
+{id:"close",name:{en:"Close",es:"Cerrar"},render:()=>`
+ <h1>${es()?"Sal con un resultado, siempre":"Leave with a result, always"}</h1>
+ <p class="lead">${es()?"Cierra en sitio si el alcance está claro y tienes tarifa aprobada. Si no, sal con dos fechas. Si no es el momento, sal con la semilla de una venta futura.":"Close on site if the scope is clear and you have approved pricing. If not, leave with two dates. If it's not the moment, leave with the seed of a future sale."}</p>
+ <h2>${es()?"Señales de que están listos":"Signs they're ready"}</h2>
+ <div class="card soft">${es()?"Preguntan cuándo pueden empezar, qué documentos necesitas, si trabajas de noche, si estás asegurado, qué pasa si necesitan algo extra. Cuando oigas esto, deja de presentar y cierra.":"They ask when you can start, what documents you need, if you work nights, if you're insured, what happens if they need something extra. When you hear this, stop presenting and close."}</div>
+ <h2>${es()?"Cierres":"Closes"}</h2>
+ ${CLOSES.map(closeHTML).join("")}
+ <h2>${es()?"Di esto":"Say this"}</h2>
+ ${!isWalk()?say("This was really helpful. You told me consistency, a real point of contact, and follow-through matter most. Let me come see the space so I can show you exactly how we'd deliver that. Would Tuesday or Thursday work better?"):""}
+ ${S.niche==="residential"?say("Based on everything we've seen, here's what I'd recommend. We have Thursday at 9 or Saturday at 1. Which works better for you?"):say("This has been really helpful. I'll put together a proposal based on exactly what you shared and have it to you by [day]. Would [day/time] or [day/time] work better to go over it together?")}
+ ${say("And if you know another manager dealing with the same issues, we'd love an introduction. No pressure at all.")}
+ <h2>${es()?"Dos servicios para ofrecer":"Two services to offer"}</h2>
+ <p class="hint">${es()?"Elige los dos que resuelven lo que nombraron o lo que viste.":"Pick the two that solve what they named or what you saw."}</p>
+ <div class="chips" id="svc">${N().services.map(s=>`<button class="chip ${(S.svc||[]).includes(s)?"on":""}" data-sv="${esc(s)}">${esc(s)}</button>`).join("")}</div>
+ <div class="field"><input type="text" data-s="svc_other" value="${esc(g("svc_other"))}" placeholder="${es()?"Otro o detalle":"Other or detail"}"></div>
+ <h2>${es()?"Resultado":"Outcome"}</h2>
+ <div class="chips" data-c="outcome">${[["Closed on site","Cerrado en sitio"],["Proposal + review set","Propuesta + revisión agendada"],["Follow-up date set","Fecha de seguimiento"],["Not now, renewal noted","No por ahora, renovación anotada"]].map(([e,s])=>`<button class="chip ${g("outcome")===e?"on":""}" data-v="${e}">${es()?s:e}</button>`).join("")}</div>
+ ${NOTE("n5",es()?"Nota 5 de 5":"Note 5 of 5",es()?"Notas generales de la oportunidad":"General notes about the opportunity",es()?"Propuesta el jueves, revisión viernes 2pm con Dana y Mike. Objeción: precio, comparan 3 noches contra 5. Prometido: reporte semanal con fotos. Segunda clínica en primavera.":"Proposal Thursday, review Friday 2pm with Dana and Mike. Objection: price, comparing 3 nights vs 5. Promised: weekly photo report. Second clinic opening in spring.")}
+ <div class="card dark"><div class="lab">${es()?"Nunca salgas sin":"Never leave without"}</div>${es()?"Fecha de propuesta · fecha de revisión · quién decide · alcance completo · permiso para volver si no es ahora":"Proposal date · review date · who decides · complete scope · permission to come back if not now"}</div>`},
+
+{id:"summary",name:{en:"Summary",es:"Resumen"},render:()=>{
+ const sv=[...(S.svc||[]),g("svc_other")].filter(Boolean).join(" · ");
+ const it=(k,l)=>`<div class="i"><b>${l}</b><span class="${g(k)?"":"miss"}">${esc(g(k)||"—")}</span></div>`;
+ const oc=g("outcome");const ocL=oc?(es()?({"Closed on site":"Cerrado en sitio","Proposal + review set":"Propuesta + revisión agendada","Follow-up date set":"Fecha de seguimiento","Not now, renewal noted":"No por ahora, renovación anotada"}[oc]):oc):"";
+ return `<h1>${es()?"Resumen de la visita":"Visit summary"}</h1>
+ <p class="lead">${es()?"Una captura de pantalla. Envíala a quien prepara la propuesta.":"One screenshot. Send it to whoever writes the proposal."}</p>
+ <div style="margin-bottom:12px"><button class="pill dark" id="cpSum">${es()?"Copiar como texto":"Copy as text"}</button></div>
+ <div class="sum"><div class="h"><b>${esc(g("company")||"Walkthrough")}</b><span>${localDate()} · ${fmt(S.elapsed)} · ${esc(S.mode?modeName():"")} · ${esc(S.niche?L(N().name):"")}</span></div>
+ <div style="margin-bottom:6px">${oc?`<span class="tag">${esc(ocL)}</span>`:`<span class="tag" style="border-style:dashed">${es()?"Sin resultado":"Outcome not set"}</span>`}</div>
+ ${it("n1",es()?"Cliente":"Client")}${it("n2",es()?"Por qué buscan":"Why looking")}${it("n3",es()?"Prioridades":"Priorities")}${it("n4",es()?"Servicio":"Service wanted")}
+ <div class="i"><b>${es()?"Ofrecer":"Offer"}</b><span class="${sv?"":"miss"}">${esc(sv||"—")}</span></div>${it("n5",es()?"Notas":"Notes")}</div>`}}
+];
+
+function summaryText(){const sv=[...(S.svc||[]),g("svc_other")].filter(Boolean).join(" · ");const T=(e,s)=>es()?s:e;
+ return [`${g("company")||"WALKTHROUGH"} · ${localDate()} · ${fmt(S.elapsed)} · ${S.mode?modeName():""} · ${S.niche?L(N().name):""}`,`${T("OUTCOME","RESULTADO")}: ${g("outcome")||"—"}`,"",`${T("CLIENT","CLIENTE")}: ${g("n1")||"—"}`,"",`${T("WHY LOOKING","POR QUÉ BUSCAN")}: ${g("n2")||"—"}`,"",`${T("PRIORITIES","PRIORIDADES")}: ${g("n3")||"—"}`,"",`${T("SERVICE WANTED","SERVICIO")}: ${g("n4")||"—"}`,"",`${T("OFFER","OFRECER")}: ${sv||"—"}`,"",`${T("NOTES","NOTAS")}: ${g("n5")||"—"}`].join("\n")}
+
+/* ================= TIMER ================= */
+let running=false,last=0,tick=null;
+const fmt=ms=>{const t=Math.floor((ms||0)/1000);return pad(Math.floor(t/60))+":"+pad(t%60)};
+function updTimer(){const el=$("#timer");el.textContent=(running?"● ":"")+fmt(S.elapsed);el.classList.toggle("on",running)}
+function startTimer(){if(running)return;running=true;last=Date.now();tick=setInterval(()=>{const n=Date.now();S.elapsed+=n-last;last=n;save();updTimer()},500);updTimer()}
+function stopTimer(){running=false;clearInterval(tick);updTimer()}
+$("#timer").onclick=()=>running?stopTimer():startTimer();
+
+/* ================= RENDER ================= */
+async function copyTxt(t){try{await navigator.clipboard.writeText(t)}catch(e){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy")}catch(x){}ta.remove()}}
+function render(){
+ const st=STEPS[S.step];
+ $("#brand").innerHTML=`${L(U.brand)}<small>${L(U.brandSub)}</small>`;
+ $("#lang").textContent=es()?"EN":"ES";$("#toSum").textContent=L(U.summary);$("#reset").textContent=L(U.newVisit);
+ $("#company").placeholder=es()?"Tu empresa":"Your company";
+ $("#steps").innerHTML=STEPS.map((s,i)=>`<button data-i="${i}" class="${i<S.step?"done":""} ${i===S.step?"on":""}" title="${stepName(s)}" aria-label="${stepName(s)}"></button>`).join("");
+ $("#sname").textContent=`${S.step+1} · ${stepName(st)}`;$("#scount").textContent=`${S.step+1} / ${STEPS.length}`;
+ $("#main").innerHTML=st.render();
+ $("#back").textContent=L(U.back);$("#back").style.visibility=S.step?"visible":"hidden";
+ $("#next").textContent=S.step===STEPS.length-1?L(U.done):(S.step===STEPS.length-2?L(U.toSummary):L(U.next));
+ if(st.id==="connect"){const b=document.createElement("button");b.className="pill";b.style.marginLeft="6px";b.textContent=L(running?U.running:U.startTimer);b.onclick=()=>{startTimer();b.textContent=L(U.running)};$("#tbox").appendChild(b)}
+ if(st.id==="summary"){$("#cpSum").onclick=async()=>{await copyTxt(summaryText());toast(L(U.copiedAll))};if(running)stopTimer()}
+ window.scrollTo(0,0);save();
+}
+function recalcEst(){const o=$("#estOut");if(!o)return;const r=rates();
+ if(S.niche==="construction"){const sq=+g("e_sq")||0;let lo=0,hi=0;(S.e_ph||["final"]).forEach(p=>{lo+=sq*r[p][0];hi+=sq*r[p][1]});o.textContent=sq?`$${Math.round(lo).toLocaleString()} – $${Math.round(hi).toLocaleString()}`:"—"}
+ if(S.niche==="pm"){const u=+g("e_units")||0;o.textContent=u?`$${(u*r.unit[0]).toLocaleString()} – $${(u*r.unit[1]).toLocaleString()}`:"—"}}
+
+document.addEventListener("click",async e=>{
+ const c=e.target.closest(".copy");if(c){await copyTxt(c.dataset.copy);c.textContent=U.copied;c.classList.add("ok");setTimeout(()=>{c.textContent=U.copy;c.classList.remove("ok")},1200);return}
+ const mo=e.target.closest("[data-mode]");if(mo){S.mode=mo.dataset.mode;save();render();return}
+ const ni=e.target.closest("[data-niche]");if(ni){S.niche=ni.dataset.niche;S.svc=[];save();$$(".niche").forEach(b=>b.classList.toggle("on",b===ni));return}
+ const sv=e.target.closest("[data-sv]");if(sv){const v=sv.dataset.sv;S.svc=S.svc||[];if(S.svc.includes(v))S.svc=S.svc.filter(x=>x!==v);else{if(S.svc.length>=2)S.svc.shift();S.svc.push(v)}save();$$("[data-sv]").forEach(b=>b.classList.toggle("on",S.svc.includes(b.dataset.sv)));return}
+ const ph=e.target.closest("[data-ph]");if(ph){const p=ph.dataset.ph;S.e_ph=S.e_ph||["final"];if(S.e_ph.includes(p)){if(S.e_ph.length>1)S.e_ph=S.e_ph.filter(x=>x!==p)}else S.e_ph.push(p);save();$$("[data-ph]").forEach(b=>b.classList.toggle("on",S.e_ph.includes(b.dataset.ph)));recalcEst();return}
+ const ch=e.target.closest("[data-c] .chip");if(ch){S[ch.parentElement.dataset.c]=ch.dataset.v;save();ch.parentElement.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x===ch));return}
+ const sb=e.target.closest("#steps button");if(sb){S.step=+sb.dataset.i;render()}
+});
+document.addEventListener("input",e=>{
+ const el=e.target;
+ if(el.id==="company"){S.company=el.value;save();$$(".say").forEach(x=>{});return}
+ if(el.dataset.s){S[el.dataset.s]=el.value;save();recalcEst();return}
+ if(el.dataset.rate){const[k,i]=el.dataset.rate.split(":");S.rates=S.rates||{};const cur=(S.rates[k]||DEF_RATES[k]).slice();cur[+i]=parseFloat(el.value)||0;S.rates[k]=cur;save();recalcEst()}
+});
+document.addEventListener("change",e=>{
+ if(e.target.id==="company"){render();return}
+ const ck=e.target.closest(".ck");if(!ck||!e.target.matches("input"))return;
+ S["ck_"+ck.dataset.ck]=[...ck.querySelectorAll("input")].map((x,i)=>x.checked?i:-1).filter(i=>i>=0);save();
+ ck.querySelectorAll("label").forEach(l=>l.classList.toggle("done",l.querySelector("input").checked));
+});
+$("#next").onclick=()=>{if(S.step===0&&(!S.niche||!S.mode)){toast(L(U.pickNiche));return}if(S.step<STEPS.length-1){S.step++;render()}};
+$("#back").onclick=()=>{if(S.step>0){S.step--;render()}};
+$("#toSum").onclick=()=>{S.step=STEPS.length-1;render()};
+$("#lang").onclick=()=>{S.lang=es()?"en":"es";save();render()};
+$("#reset").onclick=()=>{if(!confirm(L(U.confirmReset)))return;stopTimer();S={company:S.company,lang:S.lang,rates:S.rates,step:0,elapsed:0,niche:"",mode:""};save();render();toast(L(U.cleared))};
+$("#company").value=g("company");
+render();updTimer();
+</script>
+</body>
+</html>
